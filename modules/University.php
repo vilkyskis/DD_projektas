@@ -6,8 +6,6 @@
  * Time: 18.16
  */
 
-include_once "Student.php";
-
 final class University
 {
     private $title;
