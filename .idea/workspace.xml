@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4c9c29de-3ca5-4c74-8ac7-7e9034ee3fd4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/modules/University.php" afterPath="$PROJECT_DIR$/modules/University.php" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/logout.php" afterPath="$PROJECT_DIR$/public_html/logout.php" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/main.php" afterPath="$PROJECT_DIR$/resources/templates/main.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -133,6 +130,13 @@
       <command text="git DD ." />
       <command text="git add." />
       <command text="git add ." />
+      <command text="git commit -m &quot;logout is working&quot;" />
+      <command text="git push" />
+      <command text="git merge master" />
+      <command text="git merge" />
+      <command text="git merge /master" />
+      <command text="git merge master" />
+      <command text="git status" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
@@ -356,7 +360,7 @@
       <workItem from="1520886935490" duration="7142000" />
       <workItem from="1520953124557" duration="1315000" />
       <workItem from="1520980425399" duration="5000" />
-      <workItem from="1520980445460" duration="141000" />
+      <workItem from="1520980445460" duration="444000" />
     </task>
     <task id="LOCAL-00001" summary="init station">
       <created>1520439961955</created>
@@ -376,18 +380,17 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31694000" />
+    <option name="totallyTimeSpent" value="31997000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="24" width="1248" height="1056" extended-state="4" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15064102" sideWeight="0.4937107" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
