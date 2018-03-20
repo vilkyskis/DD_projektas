@@ -2,12 +2,5 @@
 session_start();
 unset($_SESSION['on']);
 session_destroy();
-
-header();
-
-
-
-
-
-įr
-exit;
+header("Location:index.php");
+exit();
