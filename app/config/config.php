@@ -11,4 +11,4 @@
     // !!!CHANGE PORT!!!
     define("URLROOT", "http://localhost:5000/loginmvc");
     // Site Name
-    define("SITENAME", "Login");
+    define("SITENAME", "LoginMVC");
