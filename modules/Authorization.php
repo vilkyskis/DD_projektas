@@ -37,7 +37,7 @@ final class Authorization implements Login
      * @param string $password
      * @return bool
      */
-    public function checkUser($email, $password)
+    public function checkUser(string $email, string $password)
     {
         $user = $this->getUser($email);
         if (isset($user)) {

@@ -18,7 +18,7 @@ $a = new Student('as', 'ass');
 $b = new Student('bs', 'bss');
 $university->addStudent($a);
 $university->addStudent($b);
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 if (isset($_SESSION['on']) && $_SESSION['on'] === true) {
     include_once(TEMPLATES_PATH . '/main.php');
@@ -29,7 +29,7 @@ if (isset($_SESSION['on']) && $_SESSION['on'] === true) {
         include_once(TEMPLATES_PATH . '/main.php');
     } else {
         include_once(TEMPLATES_PATH . "/login.php");
-        echo '<h2>Prisijungti nepavyko</h2>';
+        echo '<h2 color="red">Prisijungti nepavyko</h2>';
     }
 } else {
     include_once(TEMPLATES_PATH . "/login.php");
