@@ -18,7 +18,7 @@
         public function about(){
             $data = [
                 "title" => "About",
-                "description" => "Karolis Černiauskis IFF-6/1"
+                "description" => "Custom object oriented PHP MVC framework and login system with registration"
             ];
 
             $this->view("pages/about", $data);
