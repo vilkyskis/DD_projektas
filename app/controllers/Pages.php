@@ -7,10 +7,16 @@
 
         public function index(){
 
+
             $data = [
                 "title" => "Welcome",
                 "description" => "Simple login demonstration"
             ];
+
+
+            if(isset($_SESSION["user_id"]))
+                $data["description"] = "You are logged in. Please logout.";
+
 
             $this->view("pages/index", $data);
         }
