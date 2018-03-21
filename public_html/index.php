@@ -21,10 +21,6 @@ $auth = new Authorization($university);
 
 //----------------------------------------------------------
 
-$a = new Student('as', 'ass');
-$b = new Student('bs', 'bss');
-$university->addStudent($a);
-$university->addStudent($b);
 
 //----------------------------------------------------------
 
