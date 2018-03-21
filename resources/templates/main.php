@@ -1,8 +1,6 @@
-<h2>Jums pavyko prisijungti</h2>
-
+<link rel="stylesheet" href="../../public_html/css/login_style.css">
+<div class="block"><div class="alert_success"><?php echo $status;?></div>
 <div>
-    <form action="/logout.php">
-        <button type="submit">aaa</button>
-    </form>
-    <button formaction="<?php echo TEMPLATES_PATH . '/logout.php' ?>">Logout</button>
+    <a href="logout.php">Logout></a>
+</div>
 </div>

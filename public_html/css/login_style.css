@@ -1,13 +1,13 @@
 body {
     text-align: center;
-    background-color: powderblue;
+    background-color: lightgrey;
 }
 b {
     color: blue;
 }
 h2{
     font-size: 20px;
-    color: white;
+    color: lightgrey;
 }
 h2.error {
     color: red;
@@ -17,7 +17,11 @@ h2.error {
     margin: auto;
     width: 400px;
     align-items: center;
+    margin-top: 200px;
+    padding: 20px;
     padding-bottom: 20px;
+    padding-top: 0px;
+
 }
 form {
     width: 400px;
@@ -47,4 +51,20 @@ button[type=submit]{
 }
 input[type=submit]:hover{
     background: aquamarine;
+}
+
+.alert_failure{
+    width: 300px;
+    background-color: lightcoral;
+    margin: auto;
+    color:darkred;
+    font-size: 14px;
+}
+
+.alert_success{
+    width: 300px;
+    background-color: lightgreen;
+    margin: auto;
+    color:darkgreen;
+    font-size: 14px;
 }

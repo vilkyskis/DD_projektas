@@ -11,39 +11,28 @@ include_once "University.php";
 
 final class Authorization implements Login
 {
-    private $university;
-
-    /**
-     * Authorization constructor.
-     * @param University $university
-     */
-    public function __construct($university)
-    {
-        $this->university = $university;
-    }
-
-
-    /**
-     * @param string $email
-     * @return null|Student
-     */
-    private function getUser(string $email)
-    {
-        return $this->university->getStudent($email);
-    }
-
-    /**
-     * @param string $email
-     * @param string $password
-     * @return bool
-     */
     public function checkUser(string $email, string $password)
     {
-        $user = $this->getUser($email);
-        if (isset($user)) {
-            if ($user->getPassword() == $password)
-                return true;
+
+        $connection = mysqli_connect('localhost','root', 'arminas9');
+        if(!$connection){
+            die("DB Connection failed" . mysqli_error($connection));
         }
-        return false;
+        $selection = mysqli_select_db($connection, 'Login_Details');
+        if(!$selection){
+            die("DB Selection failed" . mysqli_error($connection));
+        }
+        if(isset($_POST) & !empty($_POST)){
+            $_email = mysqli_real_escape_string($connection,$email);
+            $_password = md5($password);
+            $sql = "SELECT * FROM `login` WHERE email='$_email' AND password='$_password'";
+            $result = mysqli_query($connection, $sql);
+            $count = mysqli_num_rows($result);
+            if($count == 1){
+               return true;
+            }
+            else
+                return false;
+        }
     }
 }
