@@ -59,6 +59,6 @@ class __TwigTemplate_759e97c39efc990118a1b29026713703dc5393af2c833e7b80c9a7c56bb
     <?php echo \$view['form']->label(\$child, null, array('translation_domain' => \$choice_translation_domain)) ?>
 <?php endforeach ?>
 </div>
-", "@Framework/Form/choice_widget_expanded.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/Form/choice_widget_expanded.html.php");
+", "@Framework/Form/choice_widget_expanded.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/Form/choice_widget_expanded.html.php");
     }
 }

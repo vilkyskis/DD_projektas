@@ -53,6 +53,6 @@ class __TwigTemplate_ff282458c4a401d65e21facae3023edbfb14a404e651068ee8a3cf2bb76
         return new Twig_Source("<?php foreach (\$form as \$child) : ?>
     <?php echo \$view['form']->row(\$child) ?>
 <?php endforeach; ?>
-", "@Framework/Form/form_rows.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/Form/form_rows.html.php");
+", "@Framework/Form/form_rows.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/Form/form_rows.html.php");
     }
 }

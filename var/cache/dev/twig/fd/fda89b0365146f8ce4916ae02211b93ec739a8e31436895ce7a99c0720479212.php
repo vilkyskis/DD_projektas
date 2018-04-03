@@ -936,6 +936,6 @@ class __TwigTemplate_c388e30d54a3ae7fd6c192bb034a0f91a681fdd64bef7a3d5e51ef01577
         </table>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/config.html.twig", "/var/www/DD_projekt/vendor/symfony/web-profiler-bundle/Resources/views/Collector/config.html.twig");
+", "@WebProfiler/Collector/config.html.twig", "/var/www/DD_projektas/vendor/symfony/web-profiler-bundle/Resources/views/Collector/config.html.twig");
     }
 }

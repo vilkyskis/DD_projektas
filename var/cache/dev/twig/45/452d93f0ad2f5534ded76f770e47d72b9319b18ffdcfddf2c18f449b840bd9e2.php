@@ -57,6 +57,6 @@ class __TwigTemplate_d2d555abb0715fc0e880035fb59842f3606162acaa789f147f1fb4956dd
 <?php else: ?>
 <?php echo \$view['form']->block(\$form, 'form_widget_simple')?>
 <?php endif ?>
-", "@Framework/Form/form_widget.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/Form/form_widget.html.php");
+", "@Framework/Form/form_widget.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/Form/form_widget.html.php");
     }
 }

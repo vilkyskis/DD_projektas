@@ -1156,6 +1156,6 @@ class __TwigTemplate_ce808c84eb646689dfe59577254a815280fc9fa2dc9bb749ad4720793c1
         </table>
     {% endif %}
 {% endblock %}
-", "@Security/Collector/security.html.twig", "/var/www/DD_projekt/vendor/symfony/security-bundle/Resources/views/Collector/security.html.twig");
+", "@Security/Collector/security.html.twig", "/var/www/DD_projektas/vendor/symfony/security-bundle/Resources/views/Collector/security.html.twig");
     }
 }

@@ -51,6 +51,6 @@ class __TwigTemplate_ed544262e943867a1fa8b2d1f4482a4c4fefbd3cee6a958ac6f17d81722
     {
         return new Twig_Source("<?php if (!empty(\$id)): ?>id=\"<?php echo \$view->escape(\$id) ?>\"<?php endif ?>
 <?php echo \$attr ? ' '.\$view['form']->block(\$form, 'attributes') : '' ?>
-", "@Framework/Form/widget_container_attributes.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/Form/widget_container_attributes.html.php");
+", "@Framework/Form/widget_container_attributes.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/Form/widget_container_attributes.html.php");
     }
 }

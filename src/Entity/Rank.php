@@ -21,6 +21,7 @@ class Rank
      */
     private $title;
 
+
     public function getId()
     {
         return $this->id;
@@ -37,4 +38,5 @@ class Rank
 
         return $this;
     }
+
 }

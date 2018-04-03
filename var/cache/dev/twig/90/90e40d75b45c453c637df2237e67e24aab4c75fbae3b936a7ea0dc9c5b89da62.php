@@ -57,6 +57,6 @@ class __TwigTemplate_a1e04a8113d5844aba7aaed505584e85f7c0192b6c6417b41b9caf4fc83
     <?php if (strlen(\$value) > 0): ?> value=\"<?php echo \$view->escape(\$value) ?>\"<?php endif ?>
     <?php if (\$checked): ?> checked=\"checked\"<?php endif ?>
 />
-", "@Framework/Form/checkbox_widget.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/Form/checkbox_widget.html.php");
+", "@Framework/Form/checkbox_widget.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/Form/checkbox_widget.html.php");
     }
 }

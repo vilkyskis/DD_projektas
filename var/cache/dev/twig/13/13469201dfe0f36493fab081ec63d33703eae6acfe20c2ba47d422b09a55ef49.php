@@ -55,6 +55,6 @@ class __TwigTemplate_a5468e1ee7c01005b368ed07f425f9791025ea450797a30ec1c7ee3962d
 <?php echo \$view['form']->rest(\$form) ?>
 <?php endif ?>
 </form>
-", "@Framework/Form/form_end.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/Form/form_end.html.php");
+", "@Framework/Form/form_end.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/Form/form_end.html.php");
     }
 }

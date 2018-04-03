@@ -157,6 +157,6 @@ class __TwigTemplate_9c61b020f52b1b14f683561d3ac2789f1c183a6528c4ea7031310b3a103
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "/var/www/DD_projekt/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "/var/www/DD_projektas/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
     }
 }

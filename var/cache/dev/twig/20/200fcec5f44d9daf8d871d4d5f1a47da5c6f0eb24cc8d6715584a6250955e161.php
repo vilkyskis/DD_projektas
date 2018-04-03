@@ -55,6 +55,6 @@ class __TwigTemplate_967e9b9c71d3502d6a211387fda62b1891dc03dd4e6debcbe790566c70e
     public function getSourceContext()
     {
         return new Twig_Source("{{ include('@Twig/Exception/exception.xml.twig', { exception: exception }) }}
-", "@Twig/Exception/exception.rdf.twig", "/var/www/DD_projekt/vendor/symfony/twig-bundle/Resources/views/Exception/exception.rdf.twig");
+", "@Twig/Exception/exception.rdf.twig", "/var/www/DD_projektas/vendor/symfony/twig-bundle/Resources/views/Exception/exception.rdf.twig");
     }
 }

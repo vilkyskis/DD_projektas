@@ -2011,6 +2011,6 @@ class __TwigTemplate_51b47fd2f682b4cff637b1c62dedae0de213edeb06dd20fadce7d4bcd4a
         {{ tree.form_tree_details(childName, childData, forms_by_hash) }}
     {% endfor %}
 {% endmacro %}
-", "@WebProfiler/Collector/form.html.twig", "/var/www/DD_projekt/vendor/symfony/web-profiler-bundle/Resources/views/Collector/form.html.twig");
+", "@WebProfiler/Collector/form.html.twig", "/var/www/DD_projektas/vendor/symfony/web-profiler-bundle/Resources/views/Collector/form.html.twig");
     }
 }

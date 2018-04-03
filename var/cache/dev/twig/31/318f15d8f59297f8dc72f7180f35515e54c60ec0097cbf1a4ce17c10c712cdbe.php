@@ -137,6 +137,6 @@ class __TwigTemplate_838825ba8c7d2517743fccac23341db1f15bac853378c0872610360fa1f
     {{ filename|file_excerpt(line, -1) }}
 </div>
 {% endblock %}
-", "@WebProfiler/Profiler/open.html.twig", "/var/www/DD_projekt/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
+", "@WebProfiler/Profiler/open.html.twig", "/var/www/DD_projektas/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
     }
 }

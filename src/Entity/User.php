@@ -46,6 +46,13 @@ class User
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Rank")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $have;
+
+
     public function getId()
     {
         return $this->id;
@@ -119,6 +126,18 @@ class User
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getHave(): ?Rank
+    {
+        return $this->have;
+    }
+
+    public function setHave(?Rank $have): self
+    {
+        $this->have = $have;
 
         return $this;
     }

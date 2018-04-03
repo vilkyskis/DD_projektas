@@ -1182,6 +1182,6 @@ class __TwigTemplate_4bc134908b69287421cb94245e1e507da627ab518147dae324e9941128c
         display: none;
     }
 }
-", "@WebProfiler/Profiler/toolbar.css.twig", "/var/www/DD_projekt/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/toolbar.css.twig");
+", "@WebProfiler/Profiler/toolbar.css.twig", "/var/www/DD_projektas/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/toolbar.css.twig");
     }
 }

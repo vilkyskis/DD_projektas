@@ -2214,6 +2214,6 @@ table.logs .metadata {
         margin-left: 2px;
     }
 }
-", "@WebProfiler/Profiler/profiler.css.twig", "/var/www/DD_projekt/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/profiler.css.twig");
+", "@WebProfiler/Profiler/profiler.css.twig", "/var/www/DD_projektas/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/profiler.css.twig");
     }
 }

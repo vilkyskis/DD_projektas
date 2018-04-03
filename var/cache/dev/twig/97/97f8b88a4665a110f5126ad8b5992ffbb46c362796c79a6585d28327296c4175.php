@@ -155,6 +155,6 @@ class __TwigTemplate_e8c5bac61f70b6ee393f42ad175adac5b2fa886610802f6248c7cb11c40
         {% block javascripts %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "/var/www/DD_projekt/templates/base.html.twig");
+", "base.html.twig", "/var/www/DD_projektas/templates/base.html.twig");
     }
 }

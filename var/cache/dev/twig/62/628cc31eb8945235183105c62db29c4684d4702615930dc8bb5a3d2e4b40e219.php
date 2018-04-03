@@ -57,6 +57,6 @@ class __TwigTemplate_0f4e969d069db0c946724cdf30bdb6e956ba701010c9d07233cadce0a4a
     <?php echo \$view['form']->errors(\$form) ?>
     <?php echo \$view['form']->widget(\$form) ?>
 </div>
-", "@Framework/Form/form_row.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/Form/form_row.html.php");
+", "@Framework/Form/form_row.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/Form/form_row.html.php");
     }
 }

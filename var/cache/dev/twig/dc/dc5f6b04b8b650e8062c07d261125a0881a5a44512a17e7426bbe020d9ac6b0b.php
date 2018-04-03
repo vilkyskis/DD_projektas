@@ -55,6 +55,6 @@ class __TwigTemplate_c838a68e06ccc51622b209fc6e3dbcc669435354a514c04562bc4cc0ff6
     public function getSourceContext()
     {
         return new Twig_Source("{{ include('@Twig/Exception/error.xml.twig') }}
-", "@Twig/Exception/error.atom.twig", "/var/www/DD_projekt/vendor/symfony/twig-bundle/Resources/views/Exception/error.atom.twig");
+", "@Twig/Exception/error.atom.twig", "/var/www/DD_projektas/vendor/symfony/twig-bundle/Resources/views/Exception/error.atom.twig");
     }
 }

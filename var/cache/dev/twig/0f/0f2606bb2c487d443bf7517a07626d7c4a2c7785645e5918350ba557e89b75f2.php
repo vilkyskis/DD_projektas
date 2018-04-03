@@ -65,6 +65,6 @@ class __TwigTemplate_cab37316f40edff1e8c18bcd30fdb2f8b1394a8310ece6074bac1203c8d
         return new Twig_Source("<?xml version=\"1.0\" encoding=\"{{ _charset }}\" ?>
 
 <error code=\"{{ status_code }}\" message=\"{{ status_text }}\" />
-", "@Twig/Exception/error.xml.twig", "/var/www/DD_projekt/vendor/symfony/twig-bundle/Resources/views/Exception/error.xml.twig");
+", "@Twig/Exception/error.xml.twig", "/var/www/DD_projektas/vendor/symfony/twig-bundle/Resources/views/Exception/error.xml.twig");
     }
 }

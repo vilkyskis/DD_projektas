@@ -69,6 +69,6 @@ class __TwigTemplate_9705803c392d25e1e202e7bb046d72214dfec9e12ecd9533cb7bda7645f
     <?php echo \$view['form']->block(\$form, 'form_rows'); ?>
     <?php echo \$view['form']->rest(\$form); ?>
 </table>
-", "@Framework/FormTable/form_widget_compound.html.php", "/var/www/DD_projekt/vendor/symfony/framework-bundle/Resources/views/FormTable/form_widget_compound.html.php");
+", "@Framework/FormTable/form_widget_compound.html.php", "/var/www/DD_projektas/vendor/symfony/framework-bundle/Resources/views/FormTable/form_widget_compound.html.php");
     }
 }

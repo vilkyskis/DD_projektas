@@ -17,7 +17,7 @@ class Order
     private $id;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="enumOrdersStatuses")
      */
     private $status;
 
@@ -31,7 +31,7 @@ class Order
         return $this->status;
     }
 
-    public function setStatus(array $status): self
+    public function setStatus(string $status): self
     {
         $this->status = $status;
 

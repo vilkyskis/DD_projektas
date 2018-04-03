@@ -121,6 +121,6 @@ class __TwigTemplate_c6a155f4efae3ca47335fa8e41c26790965b5feb6aa27e9343d00d76588
         {% endfor %}
     </tbody>
 </table>
-", "@WebProfiler/Profiler/bag.html.twig", "/var/www/DD_projekt/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/bag.html.twig");
+", "@WebProfiler/Profiler/bag.html.twig", "/var/www/DD_projektas/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/bag.html.twig");
     }
 }
