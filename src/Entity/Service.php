@@ -22,14 +22,25 @@ class Service
     private $title;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="boolean")
+     */
+    private $available;
+
+    /**
+     * @ORM\Column(type="decimal", precision=2)
      */
     private $price;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\ManyToOne(targetEntity="App\Entity\ServicesCategory")
      */
-    private $available;
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ServicesSubCategory")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $subCategory;
 
     public function getId()
     {
@@ -48,18 +59,6 @@ class Service
         return $this;
     }
 
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
     public function getAvailable(): ?bool
     {
         return $this->available;
@@ -68,6 +67,42 @@ class Service
     public function setAvailable(bool $available): self
     {
         $this->available = $available;
+
+        return $this;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getCategory(): ?ServicesCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?ServicesCategory $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSubCategory(): ?ServicesSubCategory
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(?ServicesSubCategory $subCategory): self
+    {
+        $this->subCategory = $subCategory;
 
         return $this;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,7 +31,29 @@ class Car
     /**
      * @ORM\Column(type="string", length=32)
      */
-    private $engÅ_id_number;
+    private $eng_id_number;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CarsBrand", inversedBy="cars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $carsBrand;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CarsModel", inversedBy="cars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $carsModel;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="car")
+     */
+    private $orders;
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -60,14 +84,69 @@ class Car
         return $this;
     }
 
-    public function getEngÅIdNumber(): ?string
+    public function getEngIdNumber(): ?string
     {
-        return $this->engÅ_id_number;
+        return $this->engï¿½_id_number;
     }
 
-    public function setEngÅIdNumber(string $engÅ_id_number): self
+    public function setEngIdNumber(string $engï¿½_id_number): self
     {
-        $this->engÅ_id_number = $engÅ_id_number;
+        $this->engï¿½_id_number = $engï¿½_id_number;
+
+        return $this;
+    }
+
+    public function getCarsBrand(): ?CarsBrand
+    {
+        return $this->carsBrand;
+    }
+
+    public function setCarsBrand(?CarsBrand $carsBrand): self
+    {
+        $this->carsBrand = $carsBrand;
+
+        return $this;
+    }
+
+    public function getCarsModel(): ?CarsModel
+    {
+        return $this->carsModel;
+    }
+
+    public function setCarsModel(?CarsModel $carsModel): self
+    {
+        $this->carsModel = $carsModel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setCar($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->contains($order)) {
+            $this->orders->removeElement($order);
+            // set the owning side to null (unless already changed)
+            if ($order->getCar() === $this) {
+                $order->setCar(null);
+            }
+        }
 
         return $this;
     }

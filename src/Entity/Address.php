@@ -46,6 +46,12 @@ class Address
      */
     private $apartment;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="addressID")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId()
     {
         return $this->id;
@@ -119,6 +125,18 @@ class Address
     public function setApartment(?string $apartment): self
     {
         $this->apartment = $apartment;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

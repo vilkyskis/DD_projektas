@@ -21,6 +21,12 @@ class ServicesSubCategory
      */
     private $title;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ServicesCategory", inversedBy="subCategories")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $superCategory;
+
     public function getId()
     {
         return $this->id;
@@ -34,6 +40,18 @@ class ServicesSubCategory
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSuperCategory(): ?ServicesCategory
+    {
+        return $this->superCategory;
+    }
+
+    public function setSuperCategory(?ServicesCategory $superCategory): self
+    {
+        $this->superCategory = $superCategory;
 
         return $this;
     }
