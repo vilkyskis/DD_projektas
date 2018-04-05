@@ -1,27 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mindaugas
- * Date: 18.4.3
- * Time: 23.01
- */
 
-namespace Doctrine\DBAL; //????
+namespace App\Types;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class OrdersEnum extends Type
 {
-    const enum_name = "enumOrdersStatuses";
+    private const enum_name = "enumOrdersStatuses";
     //order's statuses
-    const status_created = "created";
-    const status_in_progress = "in progress";
-    const status_repaired = "repaired";
-    const status_canceled = "canceled";
-    const status_suspended = "suspended";
-    const status_ready_to_return = "ready to return";
-    const status_returned = "returned";
+    private const status_created = "created";
+    private const status_in_progress = "in progress";
+    private const status_repaired = "repaired";
+    private const status_canceled = "canceled";
+    private const status_suspended = "suspended";
+    private const status_ready_to_return = "ready to return";
+    private const status_returned = "returned";
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
@@ -66,3 +60,5 @@ class OrdersEnum extends Type
         return true;
     }
 }
+
+Type::addType('enumOrdersStatuses', 'App\Types\OrdersEnum');
