@@ -1,7 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
+use Acelaya\Doctrine\Type\PhpEnumType;
+use Acelaya\Enum\OrdersEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,7 +22,9 @@ class Order
     private $id;
 
     /**
-     * @ORM\Column(type="enumOrdersStatuses")
+     * @var OrdersEnum
+     *
+     * @ORM\Column(type=OrdersEnum::class)
      */
     private $status;
 
@@ -129,3 +134,6 @@ class Order
         return $this;
     }
 }
+
+// Register my types
+PhpEnumType::registerEnumType(OrdersEnum::class);

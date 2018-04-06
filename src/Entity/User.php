@@ -5,11 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -74,99 +76,28 @@ class User
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
     public function __construct()
     {
         $this->addressID = new ArrayCollection();
         $this->select_VisitID = new ArrayCollection();
         $this->perform_PaymentID = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
     }
 
-    public function getId()
+    public function addAddressID(Address $addressID): self
     {
-        return $this->id;
-    }
-
-    public function getLoginName(): ?string
-    {
-        return $this->login_name;
-    }
-
-    public function setLoginName(string $login_name): self
-    {
-        $this->login_name = $login_name;
-
-        return $this;
-    }
-
-    public function getLoginPass(): ?string
-    {
-        return $this->login_pass;
-    }
-
-    public function setLoginPass(string $login_pass): self
-    {
-        $this->login_pass = $login_pass;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    public function setSurname(string $surname): self
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(?string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getRankID(): ?Rank
-    {
-        return $this->rankID;
-    }
-
-    public function setRankID(?Rank $rankID): self
-    {
-        $this->rankID = $rankID;
+        if (!$this->addressID->contains($addressID)) {
+            $this->addressID[] = $addressID;
+            $addressID->setUser($this);
+        }
 
         return $this;
     }
@@ -179,12 +110,144 @@ class User
         return $this->addressID;
     }
 
-    public function addAddressID(Address $addressID): self
+    public function addOrder(Order $order): self
     {
-        if (!$this->addressID->contains($addressID)) {
-            $this->addressID[] = $addressID;
-            $addressID->setUser($this);
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setUser($this);
         }
+
+        return $this;
+    }
+
+    public function addPerformPaymentID(Payment $performPaymentID): self
+    {
+        if (!$this->perform_PaymentID->contains($performPaymentID)) {
+            $this->perform_PaymentID[] = $performPaymentID;
+            $performPaymentID->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function addSelectVisitID(Visit $selectVisitID): self
+    {
+        if (!$this->select_VisitID->contains($selectVisitID)) {
+            $this->select_VisitID[] = $selectVisitID;
+        }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getLoginName(): ?string
+    {
+        return $this->login_name;
+    }
+
+    public function getLoginPass(): ?string
+    {
+        return $this->login_pass;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @return Collection|Payment[]
+     */
+    public function getPerformPaymentID(): Collection
+    {
+        return $this->perform_PaymentID;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function getRankID(): ?Rank
+    {
+        return $this->rankID;
+    }
+
+    /**
+     * @return Collection|Visit[]
+     */
+    public function getSelectVisitID(): Collection
+    {
+        return $this->select_VisitID;
+    }
+
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function setLoginName(string $login_name): self
+    {
+        $this->login_name = $login_name;
+
+        return $this;
+    }
+
+    public function setLoginPass(string $login_pass): self
+    {
+        $this->login_pass = $login_pass;
+
+        return $this;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function setRankID(?Rank $rankID): self
+    {
+        $this->rankID = $rankID;
+
+        return $this;
+    }
+
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
 
         return $this;
     }
@@ -202,45 +265,14 @@ class User
         return $this;
     }
 
-    /**
-     * @return Collection|Visit[]
-     */
-    public function getSelectVisitID(): Collection
+    public function removeOrder(Order $order): self
     {
-        return $this->select_VisitID;
-    }
-
-    public function addSelectVisitID(Visit $selectVisitID): self
-    {
-        if (!$this->select_VisitID->contains($selectVisitID)) {
-            $this->select_VisitID[] = $selectVisitID;
-        }
-
-        return $this;
-    }
-
-    public function removeSelectVisitID(Visit $selectVisitID): self
-    {
-        if ($this->select_VisitID->contains($selectVisitID)) {
-            $this->select_VisitID->removeElement($selectVisitID);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Payment[]
-     */
-    public function getPerformPaymentID(): Collection
-    {
-        return $this->perform_PaymentID;
-    }
-
-    public function addPerformPaymentID(Payment $performPaymentID): self
-    {
-        if (!$this->perform_PaymentID->contains($performPaymentID)) {
-            $this->perform_PaymentID[] = $performPaymentID;
-            $performPaymentID->setUser($this);
+        if ($this->orders->contains($order)) {
+            $this->orders->removeElement($order);
+            // set the owning side to null (unless already changed)
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
+            }
         }
 
         return $this;
@@ -259,34 +291,95 @@ class User
         return $this;
     }
 
+    public function removeSelectVisitID(Visit $selectVisitID): self
+    {
+        if ($this->select_VisitID->contains($selectVisitID)) {
+            $this->select_VisitID->removeElement($selectVisitID);
+        }
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
     /**
-     * @return Collection|Order[]
+     * @see \Serializable::serialize()
      */
-    public function getOrders(): Collection
+    public function serialize()
     {
-        return $this->orders;
+        return $this->serialize(array(
+            $this->id,
+            $this->login_name,
+            $this->login_pass,
+            $this->isActive));
     }
 
-    public function addOrder(Order $order): self
+    public function unserialize($serialized)
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setUser($this);
-        }
-
-        return $this;
+        list (
+            $this->id,
+            $this->login_name,
+            $this->login_pass,
+            $this->isActive,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized);
     }
 
-    public function removeOrder(Order $order): self
+    public function getRoles()
     {
-        if ($this->orders->contains($order)) {
-            $this->orders->removeElement($order);
-            // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
-            }
-        }
+        return array('ROLE_USER');
+    }
 
-        return $this;
+    public function getPassword()
+    {
+        return $this->getLoginPass();
+    }
+
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function getUsername()
+    {
+        return $this->login_name;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->isActive;
     }
 }

@@ -1,0 +1,60 @@
+{
+    "name": "acelaya/doctrine-enum-type",
+    "description": "A custom Doctrine type that maps column values to enum objects using myclabs/php-enum",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alejandro Celaya",
+            "email": "alejandro@alejandrocelaya.com"
+        }
+    ],
+    "keywords": [
+        "type",
+        "doctrine",
+        "enum"
+    ],
+    "require": {
+        "php": "^7.1",
+        "doctrine/dbal": "^2.6",
+        "myclabs/php-enum": "^1.4"
+    },
+    "require-dev": {
+        "infection/infection": "^0.8.1",
+        "phpstan/phpstan": "^0.9.2",
+        "phpunit/phpunit": "^7.0",
+        "slevomat/coding-standard": "^4.0",
+        "squizlabs/php_codesniffer": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Acelaya\\Doctrine\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Acelaya\\Test\\Doctrine\\": "test"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "ac:ci": [
+            "@ac:cs",
+            "@ac:stan",
+            "@ac:test-ci",
+            "@ac:infect"
+        ],
+
+        "ac:cs": "phpcs --colors",
+        "ac:cs-fix": "phpcbf",
+        "ac:stan": "phpstan analyse src/ --level=6",
+
+        "ac:test": "phpunit --colors=always",
+        "ac:test-pretty": "phpunit --colors=always --coverage-html=build/html",
+        "ac:test-ci": "phpunit --colors=always --coverage-clover=build/clover.xml --coverage-xml=build/coverage-xml --log-junit=build/phpunit.junit.xml",
+
+        "ac:infect": "infection --threads=4 --min-msi=90 --log-verbosity=2 --only-covered --coverage=build",
+        "ac:infect-show": "infection --threads=4 --min-msi=90 --log-verbosity=2 --only-covered --show-mutations"
+    }
+}

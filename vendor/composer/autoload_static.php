@@ -97,6 +97,7 @@ class ComposerStaticInitdc8e150e972a55ee17afc6add4538633
         ),
         'M' => 
         array (
+            'MyCLabs\\Enum\\' => 13,
             'Monolog\\' => 8,
         ),
         'F' => 
@@ -125,6 +126,7 @@ class ComposerStaticInitdc8e150e972a55ee17afc6add4538633
         array (
             'App\\Tests\\' => 10,
             'App\\' => 4,
+            'Acelaya\\Doctrine\\' => 17,
         ),
     );
 
@@ -375,6 +377,10 @@ class ComposerStaticInitdc8e150e972a55ee17afc6add4538633
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
         ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -438,6 +444,10 @@ class ComposerStaticInitdc8e150e972a55ee17afc6add4538633
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Acelaya\\Doctrine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/acelaya/doctrine-enum-type/src',
         ),
     );
 
