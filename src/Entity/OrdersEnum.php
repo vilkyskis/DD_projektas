@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use MyCLabs\Enum\Enum AS EnumPLSwork;
+use MyCLabs\Enum\Enum;
 
-class OrdersEnum extends EnumPLSwork
+class OrdersEnum extends Enum
 {
     public const status_created = "created";
     public const status_in_progress = "in progress";
