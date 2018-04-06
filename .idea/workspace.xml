@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c9c29de-3ca5-4c74-8ac7-7e9034ee3fd4" name="Default" comment="init station">
-      <change afterPath="$PROJECT_DIR$/.env_example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/OrdersEnum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OrdersEnum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/0/W/ccTCOc1mt-sN8JP6NOGn" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/0/W/ccTCOc1mt-sN8JP6NOGn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/1/0/TsOcSbbj9WCAfIi9-B3X" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/1/0/TsOcSbbj9WCAfIi9-B3X" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/9/S/PG01Rp0WjdXvQZiSXeJy" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/9/S/PG01Rp0WjdXvQZiSXeJy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/A/Q/sNguUtfcq3Ug6-MU08di" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/A/Q/sNguUtfcq3Ug6-MU08di" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/B/T/eA4hIRUqeV17--AYQsI8" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/B/T/eA4hIRUqeV17--AYQsI8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/B/Y/lcA6EJVklIFbcaxC7wbY" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/B/Y/lcA6EJVklIFbcaxC7wbY" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/N/T/CSwmdCpnsq4IChFcD8an" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/N/T/CSwmdCpnsq4IChFcD8an" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/W/0/GByfsTSGIqMxOjgiLVb+" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/FZreKrA0O9/W/0/GByfsTSGIqMxOjgiLVb+" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcDevDebugProjectContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcDevDebugProjectContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,16 +41,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+            <state relative-caret-position="18">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".env_example" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".env_example" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env_example">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
@@ -222,8 +208,8 @@
         <option value="$PROJECT_DIR$/src/Entity/Order.php" />
         <option value="$PROJECT_DIR$/src/Entity/OrdersEnum.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.env_example" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -558,7 +544,7 @@
       <workItem from="1522933120796" duration="1971000" />
       <workItem from="1522954200435" duration="524000" />
       <workItem from="1522955051607" duration="3555000" />
-      <workItem from="1523002552133" duration="4206000" />
+      <workItem from="1523002552133" duration="4691000" />
     </task>
     <task id="LOCAL-00001" summary="init station">
       <created>1520439961955</created>
@@ -589,7 +575,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71305000" />
+    <option name="totallyTimeSpent" value="71790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="24" width="1250" height="1056" extended-state="4" />
@@ -850,17 +836,17 @@
     <entry file="file://$PROJECT_DIR$/.env.dist">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env_example">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
