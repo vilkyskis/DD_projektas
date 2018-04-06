@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Acelaya\Enum;
+namespace App\Entity;
 
 use MyCLabs\Enum\Enum AS EnumPLSwork;
 

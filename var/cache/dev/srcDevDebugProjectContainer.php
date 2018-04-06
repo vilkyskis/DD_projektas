@@ -16,6 +16,6 @@ if (!\class_exists(srcDevDebugProjectContainer::class, false)) {
 
 return new \ContainerJgPreod\srcDevDebugProjectContainer(array(
     'container.build_hash' => 'JgPreod',
-    'container.build_id' => 'fdc81fa3',
-    'container.build_time' => 1523003809,
+    'container.build_id' => '6168ae36',
+    'container.build_time' => 1523006407,
 ), __DIR__.\DIRECTORY_SEPARATOR.'ContainerJgPreod');
