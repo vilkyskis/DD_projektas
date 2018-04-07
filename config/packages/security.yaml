@@ -1,24 +1,43 @@
 security:
     encoders:
-        App\Entity\User:
+        Symfony\Component\Security\Core\User\User:
             algorithm: bcrypt
+            cost: 12
+        App\Entity\User: plaintext
+            #algorithm: bcrypt
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         our_db_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                property: login_name
                 # if you're using multiple entity managers
                 # manager_name: customer
+        in_memory:
+            memory:
+                users:
+                    ryan:
+                        password: ryanpass
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: $2y$12$j3g0816Lm34ivnuODARQx.qNeRyyKXuEihtVR8wkgHDd3CCnKrVda
+                        roles: 'ROLE_ADMIN'
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            #anonymous: ~
-            #http_basic: ~
+            anonymous: ~
+            http_basic: ~
             provider: our_db_provider
+
+        #secured_area:
+            # ...
+         #   logout:
+          #      path:   /logout
+           #     target:
 
             # activate different ways to authenticate
 

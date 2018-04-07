@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,6 +21,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=32)
      */
     private $login_name;
@@ -29,6 +30,12 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(type="string", length=32)
      */
     private $login_pass;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="string", length=32)
@@ -46,15 +53,11 @@ class User implements AdvancedUserInterface, \Serializable
     private $phone;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     * @ORM\Column(type="string", length=30, nullable=true, unique=true)
      */
     private $email;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Rank")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $rankID;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Address", mappedBy="user", orphanRemoval=true)
@@ -81,6 +84,11 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $rank;
+
     public function __construct()
     {
         $this->addressID = new ArrayCollection();
@@ -90,6 +98,22 @@ class User implements AdvancedUserInterface, \Serializable
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 
     public function addAddressID(Address $addressID): self
@@ -144,6 +168,13 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->email;
     }
 
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -154,14 +185,23 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->login_name;
     }
 
-    public function getLoginPass(): ?string
+    public function setLoginName(string $login_name): self
     {
-        return $this->login_pass;
+        $this->login_name = $login_name;
+
+        return $this;
     }
 
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -185,9 +225,11 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->phone;
     }
 
-    public function getRankID(): ?Rank
+    public function setPhone(?string $phone): self
     {
-        return $this->rankID;
+        $this->phone = $phone;
+
+        return $this;
     }
 
     /**
@@ -201,48 +243,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getSurname(): ?string
     {
         return $this->surname;
-    }
-
-    public function setEmail(?string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function setLoginName(string $login_name): self
-    {
-        $this->login_name = $login_name;
-
-        return $this;
-    }
-
-    public function setLoginPass(string $login_pass): self
-    {
-        $this->login_pass = $login_pass;
-
-        return $this;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function setRankID(?Rank $rankID): self
-    {
-        $this->rankID = $rankID;
-
-        return $this;
     }
 
     public function setSurname(string $surname): self
@@ -338,12 +338,24 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array('ROLE_ADMIN');
     }
 
     public function getPassword()
     {
         return $this->getLoginPass();
+    }
+
+    public function getLoginPass(): ?string
+    {
+        return $this->login_pass;
+    }
+
+    public function setLoginPass(string $login_pass): self
+    {
+        $this->login_pass = $login_pass;
+
+        return $this;
     }
 
     public function getSalt()
@@ -381,5 +393,17 @@ class User implements AdvancedUserInterface, \Serializable
     public function isEnabled()
     {
         return $this->isActive;
+    }
+
+    public function getRank(): ?string
+    {
+        return $this->rank;
+    }
+
+    public function setRank(string $rank): self
+    {
+        $this->rank = $rank;
+
+        return $this;
     }
 }

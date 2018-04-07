@@ -14,6 +14,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Order
 {
+
+    protected const status_created = "created";
+    protected const status_in_progress = "in progress";
+    protected const status_repaired = "repaired";
+    protected const status_canceled = "canceled";
+    protected const status_suspended = "suspended";
+    protected const status_ready_to_return = "ready to return";
+    protected const status_returned = "returned";
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -22,9 +31,7 @@ class Order
     private $id;
 
     /**
-     * @var OrdersEnum
-     *
-     * @ORM\Column(type=OrdersEnum::class)
+     * @ORM\Column(type="string", length=32)
      */
     private $status;
 
@@ -134,6 +141,3 @@ class Order
         return $this;
     }
 }
-
-// Register my types
-PhpEnumType::registerEnumType(OrdersEnum::class);
