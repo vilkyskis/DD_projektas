@@ -35,7 +35,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
-    private $plainPassword;
+    private $plainPassword = 0;
 
     /**
      * @ORM\Column(type="string", length=32)
@@ -323,7 +323,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function serialize()
     {
-        return $this->serialize(array(
+        return serialize(array(
             $this->id,
             $this->loginName,
             $this->loginPass,
@@ -339,7 +339,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->isActive,
             // see section on salt below
             // $this->salt
-            ) = unserialize($serialized);
+            ) = unserialize($serialized, ['allowed_classes' => false]);
     }
 
     public function getRoles()
