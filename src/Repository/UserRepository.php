@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
  * @method User|null findOneBy(array $criteria, array $orderBy = null)
@@ -51,10 +52,12 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
     */
     public function loadUserByUsername($username)
     {
-        return $this->createQueryBuilder('user')
+        $query = $this->createQueryBuilder('user')
             ->where('user.login_name = :login_name')
-            ->setParameter('login_name', $username)
-            ->getQuery()
+            ->setParameter('login_name', $username);
+        var_dump($query);
+        die();
+            $query->getQuery()
             ->getOneOrNullResult();
     }
 }

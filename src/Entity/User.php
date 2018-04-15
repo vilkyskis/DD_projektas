@@ -24,12 +24,12 @@ class User implements AdvancedUserInterface, \Serializable
      * @Assert\NotBlank()
      * @ORM\Column(type="string", length=32)
      */
-    private $login_name;
+    private $loginName;
 
     /**
      * @ORM\Column(type="string", length=32)
      */
-    private $login_pass;
+    private $loginPass;
 
     /**
      * @Assert\NotBlank()
@@ -89,6 +89,11 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $rank;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="user", orphanRemoval=true)
+     */
+    private $cars;
+
     public function __construct()
     {
         $this->addressID = new ArrayCollection();
@@ -96,6 +101,7 @@ class User implements AdvancedUserInterface, \Serializable
         $this->perform_PaymentID = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->isActive = true;
+        $this->cars = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
     }
@@ -182,24 +188,24 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getLoginName(): ?string
     {
-        return $this->login_name;
+        return $this->loginName;
     }
 
-    public function setLoginName(string $login_name): self
+    public function setLoginName(string $loginName): self
     {
-        $this->login_name = $login_name;
+        $this->loginName = strtolower($loginName);
 
         return $this;
     }
 
     public function getName(): ?string
     {
-        return $this->name;
+        return ucfirst(strtolower($this->name));
     }
 
     public function setName(string $name): self
     {
-        $this->name = $name;
+        $this->name = strtolower($name);
 
         return $this;
     }
@@ -242,12 +248,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getSurname(): ?string
     {
-        return $this->surname;
+        return ucfirst(strtolower($this->surname));
     }
 
     public function setSurname(string $surname): self
     {
-        $this->surname = $surname;
+        $this->surname = strtolower($surname);
 
         return $this;
     }
@@ -319,8 +325,8 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return $this->serialize(array(
             $this->id,
-            $this->login_name,
-            $this->login_pass,
+            $this->loginName,
+            $this->loginPass,
             $this->isActive));
     }
 
@@ -328,8 +334,8 @@ class User implements AdvancedUserInterface, \Serializable
     {
         list (
             $this->id,
-            $this->login_name,
-            $this->login_pass,
+            $this->loginName,
+            $this->loginPass,
             $this->isActive,
             // see section on salt below
             // $this->salt
@@ -348,12 +354,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getLoginPass(): ?string
     {
-        return $this->login_pass;
+        return $this->loginPass;
     }
 
-    public function setLoginPass(string $login_pass): self
+    public function setLoginPass(string $loginPass): self
     {
-        $this->login_pass = $login_pass;
+        $this->loginPass = $loginPass;
 
         return $this;
     }
@@ -367,7 +373,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getUsername()
     {
-        return $this->login_name;
+        return $this->loginName;
     }
 
     public function eraseCredentials()
@@ -406,4 +412,47 @@ class User implements AdvancedUserInterface, \Serializable
 
         return $this;
     }
+
+    /**
+     * @return Collection|Car[]
+     */
+    public function getCars(): Collection
+    {
+        return $this->cars;
+    }
+
+    public function addCar(Car $car): self
+    {
+        if (!$this->cars->contains($car)) {
+            $this->cars[] = $car;
+            $car->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCar(Car $car): self
+    {
+        if ($this->cars->contains($car)) {
+            $this->cars->removeElement($car);
+            // set the owning side to null (unless already changed)
+            if ($car->getUser() === $this) {
+                $car->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        $userName = $this->getName() . " " . $this->getSurname();
+        try {
+            return (string) $userName;
+        } catch (Exception $exception) {
+            return "Error: User __toString()";
+        }
+    }
+
+
 }

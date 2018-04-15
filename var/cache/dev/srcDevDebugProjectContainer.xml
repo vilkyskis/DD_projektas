@@ -381,11 +381,37 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/var/www/DD_projektas/var/log/dev.log</argument>
     </service>
+    <service id="SensioLabs\Security\SecurityChecker" class="SensioLabs\Security\SecurityChecker" public="false"/>
+    <service id="SensioLabs\Security\Command\SecurityCheckerCommand" class="SensioLabs\Security\Command\SecurityCheckerCommand" public="false">
+      <tag name="console.command" command="security:check"/>
+      <argument type="service" id="SensioLabs\Security\SecurityChecker"/>
+      <call method="setName">
+        <argument>security:check</argument>
+      </call>
+    </service>
+    <service id="App\Controller\CarController" class="App\Controller\CarController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\CarsBrandController" class="App\Controller\CarsBrandController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Controller\CarsModelController" class="App\Controller\CarsModelController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
     <service id="App\Controller\DefaultController" class="App\Controller\DefaultController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
     <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" public="false" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
+    </service>
+    <service id="App\Form\CarRegistrationType" class="App\Form\CarRegistrationType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CarsBrandType" class="App\Form\CarsBrandType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CarsModelType" class="App\Form\CarsModelType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Repository\AddressRepository" class="App\Repository\AddressRepository" public="false" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -455,7 +481,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.v5YYcZp"/>
+      <argument type="service" id="service_locator.iOlcZ1t"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -686,9 +712,13 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CarRegistrationType</argument>
+        <argument>App\Form\CarsBrandType</argument>
+        <argument>App\Form\CarsModelType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
@@ -894,7 +924,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.nA6cUNd"/>
+      <argument type="service" id="service_locator.TOXcJnB"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -3272,7 +3302,7 @@
     <service id="security.user.provider.concrete.our_db_provider" class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider" public="false">
       <argument type="service" id="doctrine"/>
       <argument>App\Entity\User</argument>
-      <argument>login_name</argument>
+      <argument>username</argument>
       <argument>null</argument>
     </service>
     <service id="security.user.provider.concrete.in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider" public="false">
@@ -3319,7 +3349,7 @@
       <argument>null</argument>
       <argument>true</argument>
       <argument>false</argument>
-      <argument>security.user.provider.concrete.our_db_provider</argument>
+      <argument>security.user.provider.concrete.in_memory</argument>
       <argument>main</argument>
       <argument>security.authentication.basic_entry_point.main</argument>
       <argument>null</argument>
@@ -3342,7 +3372,7 @@
       <argument type="service" id="security.authentication.trust_resolver"/>
     </service>
     <service id="security.authentication.provider.dao.main" class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
-      <argument type="service" id="security.user.provider.concrete.our_db_provider"/>
+      <argument type="service" id="security.user.provider.concrete.in_memory"/>
       <argument type="service" id="security.user_checker"/>
       <argument>main</argument>
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -4156,10 +4186,22 @@
         </argument>
       </call>
     </service>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\CarController" class="App\Controller\CarController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\CarController" class="App\Controller\CarController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\CarsBrandController" class="App\Controller\CarsBrandController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\CarsBrandController" class="App\Controller\CarsBrandController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\CarsModelController" class="App\Controller\CarsModelController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\CarsModelController" class="App\Controller\CarsModelController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\DefaultController" class="App\Controller\DefaultController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\DefaultController" class="App\Controller\DefaultController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CarRegistrationType" class="App\Form\CarRegistrationType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\CarRegistrationType" class="App\Form\CarRegistrationType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CarsBrandType" class="App\Form\CarsBrandType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\CarsBrandType" class="App\Form\CarsBrandType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CarsModelType" class="App\Form\CarsModelType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\CarsModelType" class="App\Form\CarsModelType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AddressRepository" class="App\Repository\AddressRepository" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Repository\AddressRepository" class="App\Repository\AddressRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CarRepository" class="App\Repository\CarRepository" public="false" autowire="true" abstract="true"/>
@@ -4306,13 +4348,39 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id="service_locator.v5YYcZp" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.fSCnt1p" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="carsBrandRepository" type="service" id="App\Repository\CarsBrandRepository" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id="service_locator.ks3VKU9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
-      <argument type="service" id="service_locator.6Y03JNr"/>
+    <service id="service_locator.CikYYQ2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="carsModelRepository" type="service" id="App\Repository\CarsModelRepository" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id="service_locator._ghW7IY" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id="service_locator.iOlcZ1t" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\CarsBrandController:index" type="service" id="service_locator.fSCnt1p"/>
+        <argument key="App\Controller\CarsModelController:index" type="service" id="service_locator.CikYYQ2"/>
+        <argument key="App\Controller\CarsBrandController::index" type="service" id="service_locator.fSCnt1p"/>
+        <argument key="App\Controller\CarsModelController::index" type="service" id="service_locator.CikYYQ2"/>
+      </argument>
+    </service>
+    <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
+      <argument type="service" id="service_locator.QNbN4qo"/>
+      <argument type="collection">
+        <argument key="security:check">SensioLabs\Security\Command\SecurityCheckerCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
         <argument key="cache:clear">console.command.cache_clear</argument>
@@ -4380,9 +4448,10 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id="service_locator.6Y03JNr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.QNbN4qo" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="SensioLabs\Security\Command\SecurityCheckerCommand" type="service" id="SensioLabs\Security\Command\SecurityCheckerCommand"/>
         <argument key="console.command.about" type="service" id="console.command.about"/>
         <argument key="console.command.assets_install" type="service" id="console.command.assets_install"/>
         <argument key="console.command.cache_clear" type="service" id="console.command.cache_clear"/>
@@ -4472,9 +4541,12 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.nA6cUNd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.TOXcJnB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CarRegistrationType" type="service" id="App\Form\CarRegistrationType"/>
+        <argument key="App\Form\CarsBrandType" type="service" id="App\Form\CarsBrandType"/>
+        <argument key="App\Form\CarsModelType" type="service" id="App\Form\CarsModelType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service" id="form.type.form"/>

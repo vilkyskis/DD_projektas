@@ -50,8 +50,15 @@ class Car
      */
     private $orders;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="cars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
+
         $this->orders = new ArrayCollection();
     }
 
@@ -86,12 +93,12 @@ class Car
 
     public function getEngIdNumber(): ?string
     {
-        return $this->eng�_id_number;
+        return $this->eng_id_number;
     }
 
-    public function setEngIdNumber(string $eng�_id_number): self
+    public function setEngIdNumber(string $eng_id_number): self
     {
-        $this->eng�_id_number = $eng�_id_number;
+        $this->eng_id_number = $eng_id_number;
 
         return $this;
     }
@@ -147,6 +154,18 @@ class Car
                 $order->setCar(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
