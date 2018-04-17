@@ -44,13 +44,17 @@ class __TwigTemplate_e8c5bac61f70b6ee393f42ad175adac5b2fa886610802f6248c7cb11c40
         // line 7
         echo "    </head>
     <body>
-        ";
+        <a href=\"";
         // line 9
-        $this->displayBlock('body', $context, $blocks);
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+        echo "\">Logout</a>
+        ";
         // line 10
+        $this->displayBlock('body', $context, $blocks);
+        // line 12
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 11
+        // line 13
         echo "    </body>
 </html>
 ";
@@ -97,7 +101,7 @@ class __TwigTemplate_e8c5bac61f70b6ee393f42ad175adac5b2fa886610802f6248c7cb11c40
 
     }
 
-    // line 9
+    // line 10
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -106,6 +110,8 @@ class __TwigTemplate_e8c5bac61f70b6ee393f42ad175adac5b2fa886610802f6248c7cb11c40
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
+        // line 11
+        echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -114,7 +120,7 @@ class __TwigTemplate_e8c5bac61f70b6ee393f42ad175adac5b2fa886610802f6248c7cb11c40
 
     }
 
-    // line 10
+    // line 12
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -136,9 +142,14 @@ class __TwigTemplate_e8c5bac61f70b6ee393f42ad175adac5b2fa886610802f6248c7cb11c40
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  118 => 10,  101 => 9,  84 => 6,  66 => 5,  54 => 11,  51 => 10,  49 => 9,  45 => 7,  43 => 6,  39 => 5,  33 => 1,);
+        return array (  124 => 12,  114 => 11,  105 => 10,  88 => 6,  70 => 5,  58 => 13,  55 => 12,  53 => 10,  49 => 9,  45 => 7,  43 => 6,  39 => 5,  33 => 1,);
     }
 
     public function getSourceContext()
@@ -151,7 +162,9 @@ class __TwigTemplate_e8c5bac61f70b6ee393f42ad175adac5b2fa886610802f6248c7cb11c40
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <a href=\"{{ path('logout') }}\">Logout</a>
+        {% block body %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

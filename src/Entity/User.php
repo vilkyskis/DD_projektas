@@ -27,7 +27,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $loginName;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=64)
      */
     private $loginPass;
 
@@ -35,7 +35,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
-    private $plainPassword = 0;
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="string", length=32)
@@ -101,6 +101,7 @@ class User implements AdvancedUserInterface, \Serializable
         $this->perform_PaymentID = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->isActive = true;
+        $this->rank = 'USER_ROLE';
         $this->cars = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
@@ -344,12 +345,17 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_ADMIN');
+        return array($this->rank);
     }
 
     public function getPassword()
     {
         return $this->getLoginPass();
+    }
+
+    public function setPassword($password)
+    {
+        $this->loginPass = $password;
     }
 
     public function getLoginPass(): ?string
@@ -448,7 +454,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $userName = $this->getName() . " " . $this->getSurname();
         try {
-            return (string) $userName;
+            return (string)$userName;
         } catch (Exception $exception) {
             return "Error: User __toString()";
         }

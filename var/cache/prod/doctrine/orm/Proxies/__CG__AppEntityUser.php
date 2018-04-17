@@ -64,10 +64,10 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\User' . "\0" . 'id', '' . "\0" . 'App\\Entity\\User' . "\0" . 'login_name', '' . "\0" . 'App\\Entity\\User' . "\0" . 'login_pass', '' . "\0" . 'App\\Entity\\User' . "\0" . 'name', '' . "\0" . 'App\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'App\\Entity\\User' . "\0" . 'phone', '' . "\0" . 'App\\Entity\\User' . "\0" . 'email', '' . "\0" . 'App\\Entity\\User' . "\0" . 'rankID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'addressID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'select_VisitID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'perform_PaymentID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'orders', '' . "\0" . 'App\\Entity\\User' . "\0" . 'isActive'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\User' . "\0" . 'id', '' . "\0" . 'App\\Entity\\User' . "\0" . 'loginName', '' . "\0" . 'App\\Entity\\User' . "\0" . 'loginPass', '' . "\0" . 'App\\Entity\\User' . "\0" . 'plainPassword', '' . "\0" . 'App\\Entity\\User' . "\0" . 'name', '' . "\0" . 'App\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'App\\Entity\\User' . "\0" . 'phone', '' . "\0" . 'App\\Entity\\User' . "\0" . 'email', '' . "\0" . 'App\\Entity\\User' . "\0" . 'addressID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'select_VisitID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'perform_PaymentID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'orders', '' . "\0" . 'App\\Entity\\User' . "\0" . 'isActive', '' . "\0" . 'App\\Entity\\User' . "\0" . 'rank', '' . "\0" . 'App\\Entity\\User' . "\0" . 'cars'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\User' . "\0" . 'id', '' . "\0" . 'App\\Entity\\User' . "\0" . 'login_name', '' . "\0" . 'App\\Entity\\User' . "\0" . 'login_pass', '' . "\0" . 'App\\Entity\\User' . "\0" . 'name', '' . "\0" . 'App\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'App\\Entity\\User' . "\0" . 'phone', '' . "\0" . 'App\\Entity\\User' . "\0" . 'email', '' . "\0" . 'App\\Entity\\User' . "\0" . 'rankID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'addressID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'select_VisitID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'perform_PaymentID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'orders', '' . "\0" . 'App\\Entity\\User' . "\0" . 'isActive'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\User' . "\0" . 'id', '' . "\0" . 'App\\Entity\\User' . "\0" . 'loginName', '' . "\0" . 'App\\Entity\\User' . "\0" . 'loginPass', '' . "\0" . 'App\\Entity\\User' . "\0" . 'plainPassword', '' . "\0" . 'App\\Entity\\User' . "\0" . 'name', '' . "\0" . 'App\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'App\\Entity\\User' . "\0" . 'phone', '' . "\0" . 'App\\Entity\\User' . "\0" . 'email', '' . "\0" . 'App\\Entity\\User' . "\0" . 'addressID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'select_VisitID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'perform_PaymentID', '' . "\0" . 'App\\Entity\\User' . "\0" . 'orders', '' . "\0" . 'App\\Entity\\User' . "\0" . 'isActive', '' . "\0" . 'App\\Entity\\User' . "\0" . 'rank', '' . "\0" . 'App\\Entity\\User' . "\0" . 'cars'];
     }
 
     /**
@@ -176,126 +176,78 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getId()
+    public function getPlainPassword()
     {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getId();
-        }
 
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlainPassword', []);
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
-
-        return parent::getId();
+        return parent::getPlainPassword();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getLoginName(): ?string
+    public function setPlainPassword($plainPassword): void
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLoginName', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlainPassword', [$plainPassword]);
 
-        return parent::getLoginName();
+        parent::setPlainPassword($plainPassword);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setLoginName(string $login_name): \App\Entity\User
+    public function addAddressID(\App\Entity\Address $addressID): \App\Entity\User
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLoginName', [$login_name]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAddressID', [$addressID]);
 
-        return parent::setLoginName($login_name);
+        return parent::addAddressID($addressID);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getLoginPass(): ?string
+    public function getAddressID(): \Doctrine\Common\Collections\Collection
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLoginPass', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddressID', []);
 
-        return parent::getLoginPass();
+        return parent::getAddressID();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setLoginPass(string $login_pass): \App\Entity\User
+    public function addOrder(\App\Entity\Order $order): \App\Entity\User
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLoginPass', [$login_pass]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOrder', [$order]);
 
-        return parent::setLoginPass($login_pass);
+        return parent::addOrder($order);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getName(): ?string
+    public function addPerformPaymentID(\App\Entity\Payment $performPaymentID): \App\Entity\User
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPerformPaymentID', [$performPaymentID]);
 
-        return parent::getName();
+        return parent::addPerformPaymentID($performPaymentID);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setName(string $name): \App\Entity\User
+    public function addSelectVisitID(\App\Entity\Visit $selectVisitID): \App\Entity\User
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSelectVisitID', [$selectVisitID]);
 
-        return parent::setName($name);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSurname(): ?string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurname', []);
-
-        return parent::getSurname();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setSurname(string $surname): \App\Entity\User
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurname', [$surname]);
-
-        return parent::setSurname($surname);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPhone(): ?string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', []);
-
-        return parent::getPhone();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setPhone(?string $phone): \App\Entity\User
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', [$phone]);
-
-        return parent::setPhone($phone);
+        return parent::addSelectVisitID($selectVisitID);
     }
 
     /**
@@ -323,122 +275,60 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getRankID(): ?\App\Entity\Rank
+    public function getId()
     {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRankID', []);
 
-        return parent::getRankID();
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
+
+        return parent::getId();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setRankID(?\App\Entity\Rank $rankID): \App\Entity\User
+    public function getLoginName(): ?string
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRankID', [$rankID]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLoginName', []);
 
-        return parent::setRankID($rankID);
+        return parent::getLoginName();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getAddressID(): \Doctrine\Common\Collections\Collection
+    public function setLoginName(string $loginName): \App\Entity\User
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddressID', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLoginName', [$loginName]);
 
-        return parent::getAddressID();
+        return parent::setLoginName($loginName);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function addAddressID(\App\Entity\Address $addressID): \App\Entity\User
+    public function getName(): ?string
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAddressID', [$addressID]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
-        return parent::addAddressID($addressID);
+        return parent::getName();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeAddressID(\App\Entity\Address $addressID): \App\Entity\User
+    public function setName(string $name): \App\Entity\User
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAddressID', [$addressID]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
 
-        return parent::removeAddressID($addressID);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSelectVisitID(): \Doctrine\Common\Collections\Collection
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSelectVisitID', []);
-
-        return parent::getSelectVisitID();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addSelectVisitID(\App\Entity\Visit $selectVisitID): \App\Entity\User
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSelectVisitID', [$selectVisitID]);
-
-        return parent::addSelectVisitID($selectVisitID);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeSelectVisitID(\App\Entity\Visit $selectVisitID): \App\Entity\User
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSelectVisitID', [$selectVisitID]);
-
-        return parent::removeSelectVisitID($selectVisitID);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPerformPaymentID(): \Doctrine\Common\Collections\Collection
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPerformPaymentID', []);
-
-        return parent::getPerformPaymentID();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addPerformPaymentID(\App\Entity\Payment $performPaymentID): \App\Entity\User
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPerformPaymentID', [$performPaymentID]);
-
-        return parent::addPerformPaymentID($performPaymentID);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removePerformPaymentID(\App\Entity\Payment $performPaymentID): \App\Entity\User
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePerformPaymentID', [$performPaymentID]);
-
-        return parent::removePerformPaymentID($performPaymentID);
+        return parent::setName($name);
     }
 
     /**
@@ -455,12 +345,78 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addOrder(\App\Entity\Order $order): \App\Entity\User
+    public function getPerformPaymentID(): \Doctrine\Common\Collections\Collection
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOrder', [$order]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPerformPaymentID', []);
 
-        return parent::addOrder($order);
+        return parent::getPerformPaymentID();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPhone(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', []);
+
+        return parent::getPhone();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPhone(?string $phone): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', [$phone]);
+
+        return parent::setPhone($phone);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSelectVisitID(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSelectVisitID', []);
+
+        return parent::getSelectVisitID();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSurname(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurname', []);
+
+        return parent::getSurname();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSurname(string $surname): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurname', [$surname]);
+
+        return parent::setSurname($surname);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeAddressID(\App\Entity\Address $addressID): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAddressID', [$addressID]);
+
+        return parent::removeAddressID($addressID);
     }
 
     /**
@@ -472,6 +428,28 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOrder', [$order]);
 
         return parent::removeOrder($order);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removePerformPaymentID(\App\Entity\Payment $performPaymentID): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePerformPaymentID', [$performPaymentID]);
+
+        return parent::removePerformPaymentID($performPaymentID);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeSelectVisitID(\App\Entity\Visit $selectVisitID): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSelectVisitID', [$selectVisitID]);
+
+        return parent::removeSelectVisitID($selectVisitID);
     }
 
     /**
@@ -494,6 +472,215 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function serialize()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'serialize', []);
+
+        return parent::serialize();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function unserialize($serialized)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'unserialize', [$serialized]);
+
+        return parent::unserialize($serialized);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRoles()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRoles', []);
+
+        return parent::getRoles();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPassword()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', []);
+
+        return parent::getPassword();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLoginPass(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLoginPass', []);
+
+        return parent::getLoginPass();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLoginPass(string $loginPass): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLoginPass', [$loginPass]);
+
+        return parent::setLoginPass($loginPass);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSalt()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', []);
+
+        return parent::getSalt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUsername()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', []);
+
+        return parent::getUsername();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function eraseCredentials()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'eraseCredentials', []);
+
+        return parent::eraseCredentials();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isAccountNonExpired()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isAccountNonExpired', []);
+
+        return parent::isAccountNonExpired();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isAccountNonLocked()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isAccountNonLocked', []);
+
+        return parent::isAccountNonLocked();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isCredentialsNonExpired()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isCredentialsNonExpired', []);
+
+        return parent::isCredentialsNonExpired();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isEnabled()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isEnabled', []);
+
+        return parent::isEnabled();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRank(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRank', []);
+
+        return parent::getRank();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRank(string $rank): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRank', [$rank]);
+
+        return parent::setRank($rank);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCars(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCars', []);
+
+        return parent::getCars();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addCar(\App\Entity\Car $car): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCar', [$car]);
+
+        return parent::addCar($car);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeCar(\App\Entity\Car $car): \App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCar', [$car]);
+
+        return parent::removeCar($car);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
     }
 
 }

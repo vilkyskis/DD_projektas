@@ -183,19 +183,44 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // root_path
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'App\\Controller\\DefaultController::RedirectToLogin',  '_route' => 'root_path',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_root_path;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'root_path'));
+            }
+
+            return $ret;
+        }
+        not_root_path:
+
         // app_default_admin
         if ('/admin' === $pathinfo) {
             return array (  '_controller' => 'App\\Controller\\DefaultController::admin',  '_route' => 'app_default_admin',);
         }
 
+        // app_default_profile
+        if ('/profile' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\DefaultController::profile',  '_route' => 'app_default_profile',);
+        }
+
         // login
         if ('/login' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\SecurityController::index',  '_route' => 'login',);
+            return array (  '_controller' => 'App\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
         }
 
         // logout
         if ('/logout' === $pathinfo) {
             return array('_route' => 'logout');
+        }
+
+        // user_registration
+        if ('/register' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\SecurityController::registerAction',  '_route' => 'user_registration',);
         }
 
         if (0 === strpos($pathinfo, '/user')) {

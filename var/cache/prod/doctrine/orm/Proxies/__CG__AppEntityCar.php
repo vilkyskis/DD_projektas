@@ -64,10 +64,10 @@ class Car extends \App\Entity\Car implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'license_plate', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'veh_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'eng_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsBrand', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsModel', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'orders'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'license_plate', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'veh_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'eng_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsBrand', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsModel', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'orders', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'user'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'license_plate', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'veh_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'eng_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsBrand', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsModel', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'orders'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'license_plate', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'veh_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'eng_id_number', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsBrand', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'carsModel', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'orders', '' . "\0" . 'App\\Entity\\Car' . "\0" . 'user'];
     }
 
     /**
@@ -246,12 +246,12 @@ class Car extends \App\Entity\Car implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setEngIdNumber(string $eng�_id_number): \App\Entity\Car
+    public function setEngIdNumber(string $eng_id_number): \App\Entity\Car
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEngIdNumber', [$eng�_id_number]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEngIdNumber', [$eng_id_number]);
 
-        return parent::setEngIdNumber($eng�_id_number);
+        return parent::setEngIdNumber($eng_id_number);
     }
 
     /**
@@ -329,6 +329,28 @@ class Car extends \App\Entity\Car implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOrder', [$order]);
 
         return parent::removeOrder($order);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUser(): ?\App\Entity\User
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
+
+        return parent::getUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUser(?\App\Entity\User $user): \App\Entity\Car
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
+
+        return parent::setUser($user);
     }
 
 }
