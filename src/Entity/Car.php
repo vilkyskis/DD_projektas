@@ -21,17 +21,17 @@ class Car
     /**
      * @ORM\Column(type="string", length=32)
      */
-    private $license_plate;
+    private $licensePlate;
 
     /**
      * @ORM\Column(type="string", length=32)
      */
-    private $veh_id_number;
+    private $vehIdNumber;
 
     /**
      * @ORM\Column(type="string", length=32)
      */
-    private $eng_id_number;
+    private $engIdNumber;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\CarsBrand", inversedBy="cars")
@@ -69,36 +69,36 @@ class Car
 
     public function getLicensePlate(): ?string
     {
-        return $this->license_plate;
+        return $this->licensePlate;
     }
 
-    public function setLicensePlate(string $license_plate): self
+    public function setLicensePlate(string $licensePlate): self
     {
-        $this->license_plate = $license_plate;
+        $this->licensePlate = $licensePlate;
 
         return $this;
     }
 
     public function getVehIdNumber(): ?string
     {
-        return $this->veh_id_number;
+        return $this->vehIdNumber;
     }
 
-    public function setVehIdNumber(string $veh_id_number): self
+    public function setVehIdNumber(string $vehIdNumber): self
     {
-        $this->veh_id_number = $veh_id_number;
+        $this->vehIdNumber = $vehIdNumber;
 
         return $this;
     }
 
     public function getEngIdNumber(): ?string
     {
-        return $this->eng_id_number;
+        return $this->engIdNumber;
     }
 
-    public function setEngIdNumber(string $eng_id_number): self
+    public function setEngIdNumber(string $engIdNumber): self
     {
-        $this->eng_id_number = $eng_id_number;
+        $this->engIdNumber = $engIdNumber;
 
         return $this;
     }
