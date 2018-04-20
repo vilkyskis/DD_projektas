@@ -8,12 +8,3 @@ fos_user:
     registration:
             confirmation:
                 enabled: true
-#                from_email:
-#                    address:        registration@garaz.com
-#                    sender_name:    Demo Registration
-
-#    resetting:
-#            email:
-#                from_email:
-#                    address:        registration@garaz.com
-#                    sender_name:    Demo Resetting
