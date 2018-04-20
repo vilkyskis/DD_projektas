@@ -3,5 +3,17 @@ fos_user:
     firewall_name: main
     user_class: App\Entity\User
     from_email:
-        address: "hello@garaz.com"
+        address: "karcersp2018@gmail.com"
         sender_name: "Garaz"
+    registration:
+            confirmation:
+                enabled: true
+#                from_email:
+#                    address:        registration@garaz.com
+#                    sender_name:    Demo Registration
+
+#    resetting:
+#            email:
+#                from_email:
+#                    address:        registration@garaz.com
+#                    sender_name:    Demo Resetting
