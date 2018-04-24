@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/car")
+ * @Route("/cars")
  */
 class CarController extends Controller
 {
@@ -29,10 +29,15 @@ class CarController extends Controller
     public function new(Request $request): Response
     {
         $car = new Car();
+
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //set user
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $car->setUser($user);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($car);
             $em->flush();
