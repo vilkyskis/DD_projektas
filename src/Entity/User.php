@@ -45,7 +45,8 @@ class User extends BaseUser
     private $payments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Visit", inversedBy="users")
+     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="user")
+     * @ORM\OrderBy({"date"="ASC"})
      */
     private $visits;
 

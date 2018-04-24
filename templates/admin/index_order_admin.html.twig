@@ -1,0 +1,27 @@
+<div class="jumbotron mx-4 my-4">
+    <h1 class="display-4">Orders</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col-6">Date</th>
+            <th scope="col-2">Car</th>
+            <th scope="col-2">Owner</th>
+            <th scope="col-2">Services</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in car_orders %}
+            <tr>
+                <td></td>
+                <td><a class="btn btn-secondary" href="{{ path('admin_car_show', {'id': order.car.id}) }}">Car details</a></td>
+                <td><a class="btn btn-info" href="{{ path('admin_car_user', {'id': order.car.id}) }}">Owner details</a></td>
+                <td><a class="btn btn-primary" href="{{ path('admin_order_services', {'id': order.id}) }}">Ordered services</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="container mt-4">
+    <div class="fos_user_user_show jumbotron">
+        <div class="container text-center">
+            <h1 class="display-4 pb-4">Profile</h1>
+        </div>
+        <p class="lead">{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <hr class="my-4">
+        <p class="lead">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <hr class="my-4">
+        <div class="container text-center">
+            <a class="btn btn-primary btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
+            {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
+        </div>
+    </div>
+</div>>

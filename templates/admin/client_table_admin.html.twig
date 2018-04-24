@@ -1,0 +1,35 @@
+<div class="container">
+    <h1 class="display-4">Clients</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Last login</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{client.usernameCanonical}}</td>
+                <td>{{client.emailCanonical}}</td>
+                <td>{{client.phone}}</td>
+                <td>{{client.lastLogin|date('Y-m-d')}}</td>
+                <td>
+                    {% if client.enabled %}
+                    <a href="{{ path('admin_deactivate', {
+                        name: client.usernameCanonical
+                    }) }}" class="btn btn-danger">Deactivate</a>
+                    {% else %}
+                    <a href="{{ path('admin_activate', {
+                        name: client.usernameCanonical
+                    }) }}" class="btn btn-primary">Activate</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

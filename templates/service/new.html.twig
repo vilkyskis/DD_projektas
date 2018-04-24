@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Service{% endblock %}
+
+{% block body %}
+    <div class="jumbotron mx-4 my-4">
+    <h1 class="display-4">Create new service</h1>
+
+    {{ include('service/_form.html.twig') }}
+    <hr>
+        <div class="text-center">
+            <a class="btn btn-dark text-center" href="{{ path('service_index') }}">Back to list</a>
+        </div>
+    </div>
+{% endblock %}

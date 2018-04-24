@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VisitRepository")
@@ -24,13 +25,19 @@ class Visit
     private $date;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="visits")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="visits")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $users;
+    private $user;
 
-    public function __construct()
+    public function getUser()
     {
-        $this->users = new ArrayCollection();
+        return $this->user;
+    }
+
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
     public function getId()
@@ -50,21 +57,5 @@ class Visit
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
 
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addVisit($this);
-        }
-
-        return $this;
-    }
 }

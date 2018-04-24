@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
+ * @ORM\Table(name="car_order")
  */
 class Order
 {
@@ -67,7 +68,7 @@ class Order
         return $this->id;
     }
 
-    public function getStatus(): ?array
+    public function getStatus()
     {
         return $this->status;
     }
