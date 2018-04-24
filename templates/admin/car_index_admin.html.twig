@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1 class="display-4">Cars</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>License plate</th>
+            <th>Vehicle ID number</th>
+            <th>Engine ID number</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.licensePlate }}</td>
+                <td>{{ car.vehIdNumber }}</td>
+                <td>{{ car.engIdNumber }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('admin_car_show', {'id': car.id}) }}">Show more details</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="container text-center">
+        <a class="btn btn-dark" href="{{path('admin_index')}}">Go back</a>
+    </div>
+{% endblock %}

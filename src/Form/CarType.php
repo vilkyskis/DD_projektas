@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+<<<<<<< HEAD
 
 use App\Entity\Car;
 use App\Entity\CarsBrand;
@@ -11,6 +12,10 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+=======
+use App\Entity\Car;
+use Symfony\Component\Form\AbstractType;
+>>>>>>> ownerPartV1
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,6 +27,7 @@ class CarType extends AbstractType
             ->add('license_plate')
             ->add('veh_id_number')
             ->add('eng_id_number')
+<<<<<<< HEAD
             ->add('carsBrand', EntityType::class, array(
                 'class' => CarsBrand::class,
                 'query_builder' => function (EntityRepository $er) {
@@ -55,6 +61,12 @@ class CarType extends AbstractType
 
             ));*/
             //->add('save', SubmitType::class, array('label' => 'Create Task'));*/
+=======
+            ->add('carsBrand')
+            ->add('carsModel')
+            ->add('user')
+        ;
+>>>>>>> ownerPartV1
     }
 
     public function configureOptions(OptionsResolver $resolver)

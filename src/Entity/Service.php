@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ServiceRepository")
+ * @UniqueEntity("title")
  */
 class Service
 {
@@ -17,7 +19,7 @@ class Service
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=32, unique=true)
      */
     private $title;
 
@@ -27,12 +29,13 @@ class Service
     private $available;
 
     /**
-     * @ORM\Column(type="decimal", precision=2)
+     * @ORM\Column(type="decimal", precision=6, scale=2)
      */
     private $price;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ServicesCategory")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
@@ -105,5 +108,10 @@ class Service
         $this->subCategory = $subCategory;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 }

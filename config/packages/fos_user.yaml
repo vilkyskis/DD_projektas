@@ -3,7 +3,7 @@ fos_user:
     firewall_name: main
     user_class: App\Entity\User
     from_email:
-        address: "karcersp2018@gmail.com"
+        address: "projectgaraz2018@gmail.com"
         sender_name: "Garaz"
     registration:
             confirmation:

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Service{% endblock %}
+
+{% block body %}
+    <div class="jumbotron mx-4 my-4">
+        <div class="container text-center">
+            <h1 class="display-4">Edit Service</h1>
+        </div>
+
+        {{ include('service/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <hr>
+
+        <div class="text-center">
+            <a class="btn btn-dark" href="{{ path('admin_services') }}">Back to list</a>
+        </div>
+    </div>
+{% endblock %}

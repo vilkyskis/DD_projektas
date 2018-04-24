@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    {% include('admin/nav_admin.html.twig') %}
+    {% include('admin/client_table_admin.html.twig') %}
+    <div class="container text-center">
+        <a href="{{ path('admin_index') }}" class="btn btn-dark">Go back</a>
+    </div>
+{% endblock %}

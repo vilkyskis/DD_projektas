@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car{% endblock %}
+
+{% block body %}
+    <div class="jumbotron mx-4 my-4">
+    <h1 class="display-4">Car</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>License plate</th>
+                <td>{{ car.licenseplate }}</td>
+            </tr>
+            <tr>
+                <th>Vehicle ID number</th>
+                <td>{{ car.vehidnumber }}</td>
+            </tr>
+            <tr>
+                <th>Engine ID number</th>
+                <td>{{ car.engidnumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+        <hr>
+    <div class="text-center">
+        <a class="btn btn-primary" href="{{ path('admin_car_user', {
+                        id: car.id
+                    }) }}">Show owner details</a>
+    </div>
+    </div>
+{% endblock %}
