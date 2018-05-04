@@ -19,11 +19,17 @@
                 {#</li>#}
                 {% if is_granted('ROLE_USER') %}
                     <li class="nav-item">
+                        <a href="{{ path('fos_user_profile_show') }}" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ path('fos_user_security_logout') }}" class="nav-link">Logout</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
                         <a href="{{ path('fos_user_security_login') }}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('fos_user_registration_register') }}" class="nav-link">Register</a>
                     </li>
                 {% endif %}
             </ul>

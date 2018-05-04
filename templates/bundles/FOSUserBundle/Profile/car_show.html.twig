@@ -1,0 +1,36 @@
+{% block body %}
+    <div class="container">
+    <h2 class="display-4 text-center">Cars</h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>License plate</th>
+            <th>Model</th>
+            <th>Brand</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.licensePlate }}</td>
+                <td>{{ car.carsModel }}</td>
+                <td>{{ car.carsBrand }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('car_edit', {'id': car.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="container text-center">
+
+        <a class="btn btn-dark" href="{{path('car_new')}}">Add car</a>
+    </div>
+{% endblock %}

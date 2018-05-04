@@ -13,7 +13,7 @@ class VisitType extends AbstractType
     {
         $builder
             ->add('date')
-            ->add('users')
+            ->add('user')
         ;
     }
 

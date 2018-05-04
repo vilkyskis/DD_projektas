@@ -12,5 +12,6 @@
             <a class="btn btn-primary btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
             {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
         </div>
+        {% include '/bundles/FOSUserBundle/Profile/car_show.html.twig' with {cars:user.getCars()} %}
     </div>
 </div>>
