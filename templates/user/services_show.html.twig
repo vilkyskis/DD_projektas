@@ -3,10 +3,11 @@
 {% block title %}Service{% endblock %}
 
 {% block body %}
-    <h1 align="center">Service</h1>
+    <div class="jumbotron mx-4 my-4">
+        <h1 class="display-4">Service</h1>
 
-    <table class="table table-striped text-center table-bordered">
-        <tbody>
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ service.id }}</td>
@@ -23,12 +24,15 @@
                 <th>Price</th>
                 <td>{{ service.price }}</td>
             </tr>
-        </tbody>
-    </table>
-    <div class="container text-center">
-        <a class="btn btn-primary" href="{{ path('service_edit', {'id': service.id}) }}">Edit</a>
-        <a class="btn btn-secondary" href="{{ path('service_index') }}">Go back</a>
-        {{ include('service/_delete_form.html.twig') }}
-    </div>
+            </tbody>
+        </table>
 
+        <a class="btn btn-secondary" href="{{ path('admin_services') }}">Back to list</a>
+
+        <a class="btn btn-warning" href="{{ path('admin_service_edit', {'id': service.id}) }}">Edit</a>
+
+        <hr>
+
+        {{ include('admin/service_delete_form.html.twig') }}
+    </div>
 {% endblock %}

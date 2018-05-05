@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}
 
 {% block title %}Visit index{% endblock %}
 
@@ -32,4 +32,45 @@
     </table>
 
     <a href="{{ path('visit_new') }}">Create new</a>
+{% endblock %}#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Visit index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="display-4 text-secondary text-center">Visits</h1>
+
+        <table class="table table-striped table-bordered">
+            <thead class="bg-primary text-white">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for visit in visits %}
+                <tr>
+                    <td>{{ visit.id }}</td>
+                    <td>{{ visit.date ? visit.date|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a class="btn btn-dark" href="{{ path('visit_show', {'id': visit.id}) }}">Show</a>
+                        <a class="btn btn-warning" href="{{ path('visit_edit', {'id': visit.id}) }}">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="container text-center">
+            <a class="btn btn-primary" href="{{ path('visit_new') }}">Create new</a>
+            <a class="btn btn-secondary" href="{{ path('index') }}">Go back</a>
+        </div>
+    </div>
 {% endblock %}

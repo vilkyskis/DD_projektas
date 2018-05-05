@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Visit;
-use App\Form\Visit1Type;
+use App\Form\VisitType;
 use App\Repository\VisitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +29,7 @@ class VisitController extends Controller
     public function new(Request $request): Response
     {
         $visit = new Visit();
-        $form = $this->createForm(Visit1Type::class, $visit);
+        $form = $this->createForm(VisitType::class, $visit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,7 +59,7 @@ class VisitController extends Controller
      */
     public function edit(Request $request, Visit $visit): Response
     {
-        $form = $this->createForm(Visit1Type::class, $visit);
+        $form = $this->createForm(VisitType::class, $visit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

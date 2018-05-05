@@ -172,6 +172,6 @@ class Car
 
     public function __toString()
     {
-        return $this->license_plate;
+        return $this->licensePlate;
     }
 }
