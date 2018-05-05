@@ -59,7 +59,7 @@ class VisitController extends Controller
      */
     public function edit(Request $request, Visit $visit): Response
     {
-        $form = $this->createForm(Visit1Type::class, $visit);
+        $form = $this->createForm(VisitType::class, $visit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
