@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1 class="display-4 text-secondary text-center">Services</h1>
     {% if is_granted('ROLE_ADMIN')%}
         <div class="container">
-            <h1 class="display-4 text-secondary text-center">Services</h1>
+
 
             <table class="table table-striped table-bordered">
                 <thead class="bg-primary text-white">
@@ -11,7 +12,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Available</th>
-                    <th>Price</th>
+                    <th>Price, €</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -42,13 +43,11 @@
         </div>
     {% else %}
         <div class="container">
-            <h1>Services</h1>
-
-            <table class="table table-striped">
-                <thead>
+            <table class="table table-striped table-bordered">
+                <thead class="bg-primary text-white">
                 <tr>
                     <th>Title</th>
-                    <th>Price</th>
+                    <th>Price, €</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,7 +63,9 @@
                 {% endfor %}
                 </tbody>
             </table>
+        <div class="text-center">
             <a class="btn btn-secondary" href="{{ path('index') }}">Go back</a>
+        </div>
         </div>
     {% endif %}
 {% endblock %}
