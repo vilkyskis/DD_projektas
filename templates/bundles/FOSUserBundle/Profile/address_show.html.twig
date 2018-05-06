@@ -7,8 +7,9 @@
         Number: {{ address.number }}<br>
         Apartment: {{ address.apartment }}<br>
         <a href="{{ path('address_edit',{ id:address.id }) }}">Edit</a>
+        {% if addresses is not empty %}{% include 'address/_delete_form.html.twig' with {id:address.id} %} {% endif %}
     </p>
     {% endfor %}
     {% if addresses is empty %}<a class="btn btn-lg" href="{{ path('address_new') }}">Youd don't have associated address, please add now</a><br>{% endif %}
-    {% if addresses is not empty %}{{ include('address/_delete_form.html.twig') }} {% endif %}
+
 {% endblock %}

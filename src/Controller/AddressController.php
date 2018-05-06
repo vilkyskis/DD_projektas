@@ -65,7 +65,7 @@ class AddressController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('address_edit', ['id' => $address->getId()]);
+            return $this->redirectToRoute('fos_user_profile_show', ['id' => $address->getId()]);
         }
 
         return $this->render('address/edit.html.twig', [

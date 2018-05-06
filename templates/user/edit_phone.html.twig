@@ -1,9 +1,0 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Edit phone{% endblock %}
-
-{% block body %}
-    <h1>Edit phone</h1>
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
-    <a href="{{ path('user_index') }}">back to list</a>
-{% endblock %}

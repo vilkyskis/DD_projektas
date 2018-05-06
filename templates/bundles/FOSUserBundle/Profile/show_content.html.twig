@@ -6,10 +6,6 @@
         </div>
         <div class="lead text-center container">Your {{ 'profile.show.username'|trans|lower }}: {{ user.username }}<br>
             Your {{ 'profile.show.email'|trans|lower }}: {{ user.email }}
-
-            {#TO DO :
-                Add address and phone info
-            #}
             <div class="container text-center">
                 <a class="btn btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
                 {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
@@ -21,6 +17,7 @@
                 <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">You don't have associated phone, please add now</a>
             {% else %}
                 {{ user.phone }}<br>
+                <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">Edit</a>
             {% endif %}
 
 
