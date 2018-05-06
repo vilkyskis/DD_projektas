@@ -2,18 +2,30 @@
 <div class="container mt-4">
     <div class="fos_user_user_show jumbotron">
         <div class="container text-center">
-            <h1 class="display-4 pb-4">Hello, {{ user.username|capitalize }}</h1>
+            <h1 class="display-4 pb-4">Hello, {{ user.username|capitalize }}!</h1>
         </div>
         <div class="lead text-center container">Your {{ 'profile.show.username'|trans|lower }}: {{ user.username }}<br>
             Your {{ 'profile.show.email'|trans|lower }}: {{ user.email }}
+            <div class="container text-center">
+                <a class="btn btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
+                {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
+            </div>
+
+            {% include '/bundles/FOSUserBundle/Profile/address_show.html.twig' with {addresses:user.getAddresses()} %}
+            <h2 class="text-center text-secondary">Your phone</h2>
+            {% if user.phone is empty %}
+                <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">You don't have associated phone, please add now</a>
+            {% else %}
+                {{ user.phone }}<br>
+                <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">Edit</a>
+            {% endif %}
+
+
 
         {#<hr class="my-4">#}
 {#        <p class="lead">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
         <hr class="my-4">#}
-        <div class="container text-center">
-            <a class="btn btn-primary btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
-            {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
-        </div>
+
         </div>
         <br>
         <div class="text-center container">

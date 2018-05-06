@@ -232,13 +232,13 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/order/{id}/done", name="admin_order_done", requirements={"id"="\d+"}, methods="GET")
+     * @Route("/order/{id}/done", name="admin_order_done", requirements={"id"="\d+"}, methods="GET|POST")
      */
-    public function markCarAsDone(Car $car, Swift_Mailer $mailer)
+    public function markCarAsDone(Car $car, Swift_Mailer $mailer,Order $order)
     {
         $message = (new Swift_Message('Your car is repaired'))
             ->setFrom($car->getUser()->getEmailCanonical())
-            ->setTo("karcersp2018@gmail.com")
+            ->setTo($car->getUser()->getEmail())
             ->setBody(
                 $this->renderView(
                 // app/Resources/views/Emails/registration.html.twig
@@ -247,9 +247,8 @@ class AdminController extends Controller
                 ),
                 'text/html'
             );
-
+        $order->setStatus("Done");
         $mailer->send($message);
-
         return $this->redirectToRoute('admin_index');
     }
 }

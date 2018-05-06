@@ -57,6 +57,10 @@ class Visit
 
         return $this;
     }
-
+    public function __toString()
+    {
+        $formated=$this->getDate()->format('Y-m-d H:i:s');
+        return $formated;
+    }
 
 }
