@@ -1,0 +1,18 @@
+{% block body %}
+    <h2>Your address</h2>
+    {% for address in addresses %}
+    <p>
+        City: {{ address.settlement }}<br>
+        Street: {{ address.street }}<br>
+        Number: {{ address.number }}<br>
+        Apartment: {{ address.apartment }}<br>
+        <a href="{{ path('address_edit',{ id:address.id }) }}">Edit</a>
+    </p>
+    {% endfor %}
+
+    {#<a href="{{ path('address_index') }}">back to list</a>
+
+    <a href="{{ path('address_edit', {'id': address.id}) }}">edit</a>#}
+
+    {#{{ include('address/_delete_form.html.twig') }}#}
+{% endblock %}
