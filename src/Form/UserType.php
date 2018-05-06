@@ -24,7 +24,7 @@ class UserType extends AbstractType
             ->add('confirmationToken',HiddenType::class)
             ->add('passwordRequestedAt',HiddenType::class)
             ->add('roles',HiddenType::class)*/
-            ->add('phone')
+            ->add('phone',null,array('attr' =>array('placeholder' => 'Phone'),'label' => ' '))
             /*->add('visits',HiddenType::class)*/
         ;
     }

@@ -18,6 +18,7 @@
             {% else %}
                 {{ user.phone }}<br>
                 <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">Edit</a>
+                {#{{ include('user/_delete_form.html.twig') }}#}{#TODO number delete not working#}
             {% endif %}
 
 
