@@ -4,5 +4,6 @@
     {{ parent() }}
     <div class="container">
 {% include "@FOSUser/Profile/edit_content.html.twig" %}
+        <a href="{{ path('fos_user_change_password') }}">Change password</a><br>
     </div>
 {% endblock fos_user_content %}

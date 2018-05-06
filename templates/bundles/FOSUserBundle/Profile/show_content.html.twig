@@ -11,13 +11,19 @@
                 Add address and phone info
             #}
             <div class="container text-center">
-                <a class="btn btn-primary btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
+                <a class="btn btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
                 {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
             </div>
 
             {% include '/bundles/FOSUserBundle/Profile/address_show.html.twig' with {addresses:user.getAddresses()} %}
-            <h2>Your phone</h2>
-            {{ user.phone }}<br>
+            <h2 class="text-center text-secondary">Your phone</h2>
+            {% if user.phone is empty %}
+                <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">You don't have associated phone, please add now</a>
+            {% else %}
+                {{ user.phone }}<br>
+            {% endif %}
+
+
 
         {#<hr class="my-4">#}
 {#        <p class="lead">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
