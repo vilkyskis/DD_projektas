@@ -36,7 +36,7 @@ A simple web app to help with visits, managing users and so on
  # For Gmail as a transport, use: "gmail://karcersp2018:mintmint22@localhost"
  # For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode="
  # Delivery is disabled by default via "null://localhost"
- MAILER_URL=gmail://projectgaraz2018@gmail.com:adminadmin123@localhost
+ MAILER_URL=gmail://email:password@localhost
  ###< symfony/swiftmailer-bundle ###
  
  ###> doctrine/doctrine-bundle ###
