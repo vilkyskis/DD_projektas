@@ -1,0 +1,18 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<h1 class="text-center text-secondary">PASSWORD REMINDER</h1>
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+    <div class="loginPage text-center">
+        <div>
+            <label for="username">{{ 'resetting.request.username'|trans }}</label>
+            <input type="text" id="username" name="username" required="required" />
+        </div>
+        <br>
+        <div>
+            <input class="btn btn-primary btn-lg" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+        </div>
+    </div>
+</form>
+

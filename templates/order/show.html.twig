@@ -12,6 +12,10 @@
                 <td>{{ order.id }}</td>
             </tr>
             <tr>
+                <th>Date</th>
+                <td>{{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
                 <th>Status</th>
                 <td>{{ order.status }}</td>
             </tr>
