@@ -1,9 +1,10 @@
-<div class="jumbotron mx-4 my-4">
-    <h1 class="display-4 text-center">Orders</h1>
-    <table class="table">
-        <thead>
+<div class="my-4 container" align="center">
+    <h1 class="display-4 text-center text-secondary">Orders</h1>
+    <table class="table table-bordered">
+        <thead class="bg-secondary text-white">
         <tr>
             <th scope="col-6">Date</th>
+            <th scope="col-2">Status</th>
             <th scope="col-2">Car</th>
             <th scope="col-2">Owner</th>
             <th scope="col-2">Services</th>
@@ -12,7 +13,10 @@
         <tbody>
         {% for order in car_orders %}
             <tr>
-                <td></td>
+                <td>{{ order.date.format('Y-m-d H:i') }}</td>
+                <td {% if order.status == "Done" %} class="text-success"{% else %} class="text-danger" {% endif %}>
+                    {{ order.status }}
+                </td>
                 <td><a class="btn btn-secondary" href="{{ path('admin_car_show', {'id': order.car.id}) }}">Car details</a></td>
                 <td><a class="btn btn-info" href="{{ path('admin_car_user', {'id': order.car.id}) }}">Owner details</a></td>
                 <td><a class="btn btn-primary" href="{{ path('admin_order_services', {'id': order.id}) }}">Ordered services</a></td>

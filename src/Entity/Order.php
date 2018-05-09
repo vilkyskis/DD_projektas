@@ -8,6 +8,7 @@ use App\Entity\OrdersEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
@@ -32,7 +33,14 @@ class Order
     private $id;
 
     /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    private $date;
+
+    /**
      * @ORM\Column(type="string", length=32)
+     * @Assert\NotBlank()
      */
     private $status;
 
@@ -45,11 +53,13 @@ class Order
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Car", inversedBy="orders")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $car;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Service")
+     * @Assert\NotBlank()
      */
     private $services;
 
@@ -73,7 +83,7 @@ class Order
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(string $status)
     {
         $this->status = $status;
 
@@ -138,6 +148,18 @@ class Order
     public function setCheque(?Cheque $cheque): self
     {
         $this->cheque = $cheque;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

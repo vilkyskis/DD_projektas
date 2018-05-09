@@ -232,9 +232,12 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/order/{id}/done", name="admin_order_done", requirements={"id"="\d+"}, methods="GET|POST")
+     * @Route("/order/{id}/all_done/{slug}", name="admin_order_done", requirements={
+     *     "id"="\d+",
+     *      "slug": "\d+"
+     * }, methods="GET|POST")
      */
-    public function markCarAsDone(Car $car, Swift_Mailer $mailer,Order $order)
+    public function markCarAsDone(Car $car, Swift_Mailer $mailer,$slug): Response
     {
         $message = (new Swift_Message('Your car is repaired'))
             ->setFrom($car->getUser()->getEmailCanonical())
@@ -247,8 +250,8 @@ class AdminController extends Controller
                 ),
                 'text/html'
             );
-        $order->setStatus("Done");
         $mailer->send($message);
-        return $this->redirectToRoute('admin_index');
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('order_done',array('id' => $slug));
     }
 }

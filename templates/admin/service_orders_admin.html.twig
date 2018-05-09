@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ service.title }}</td>
                     <td>{{ service.price }}</td>
-                    <td> <a class="btn btn-primary disabled" href="">Mark as done</a></td>
+                    <td> <a class="btn btn-primary" href="{{ path('order_done',{id:services.owner.id}) }}">Mark as done</a></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -27,8 +27,7 @@
         <div class="container text-center">
             <a class="btn btn-dark" href="{{ path('admin_index') }}">Go back</a>
             <a class="btn btn-warning" href="{{ path('admin_order_done', {
-                id: car.id
-            }) }}" >Mark as repaired</a>
+                id: car.id, slug: services.owner.id}) }}" >Mark as repaired</a>
         </div>
     </div>
 {% endblock %}

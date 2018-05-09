@@ -65,7 +65,7 @@ class OrderController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('order_edit', ['id' => $order->getId()]);
+            return $this->redirectToRoute('order_index', ['id' => $order->getId()]);
         }
 
         return $this->render('order/edit.html.twig', [
@@ -86,5 +86,15 @@ class OrderController extends Controller
         }
 
         return $this->redirectToRoute('order_index');
+    }
+
+    /**
+     * @Route("/{id}/done", name="order_done", methods="GET")
+     */
+    public function done(Order $order): Response
+    {
+        $order->setStatus("Done");
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('admin_index');
     }
 }

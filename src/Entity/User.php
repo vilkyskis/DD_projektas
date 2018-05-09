@@ -50,6 +50,8 @@ class User extends BaseUser
      */
     private $visits;
 
+
+
     public function __construct()
     {
         parent::__construct();
@@ -218,6 +220,34 @@ class User extends BaseUser
     {
         if ($this->visits->contains($visit)) {
             $this->visits->removeElement($visit);
+        }
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function addPayment(Payment $payment): self
+    {
+        if (!$this->payments->contains($payment)) {
+            $this->payments[] = $payment;
+            $payment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePayment(Payment $payment): self
+    {
+        if ($this->payments->contains($payment)) {
+            $this->payments->removeElement($payment);
+            // set the owning side to null (unless already changed)
+            if ($payment->getUser() === $this) {
+                $payment->setUser(null);
+            }
         }
 
         return $this;
