@@ -9,10 +9,8 @@
         <thead>
             <tr>
                 <th>Username</th>
-<<<<<<< HEAD
                 <th>Email</th>
                 <th>LastLogin</th>
-=======
                 <th>UsernameCanonical</th>
                 <th>Email</th>
                 <th>EmailCanonical</th>
@@ -24,7 +22,6 @@
                 <th>PasswordRequestedAt</th>
                 <th>Roles</th>
                 <th>Id</th>
->>>>>>> ownerPartV1
                 <th>Phone</th>
                 <th>actions</th>
             </tr>
@@ -33,11 +30,9 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.username }}</td>
-<<<<<<< HEAD
                 <td>{{ user.email }}</td>
                 <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ user.phone ? user.phone : 'not set'}}</td>
-=======
                 <td>{{ user.usernameCanonical }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.emailCanonical }}</td>
@@ -50,7 +45,6 @@
                 <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
                 <td>{{ user.id }}</td>
                 <td>{{ user.phone }}</td>
->>>>>>> ownerPartV1
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>

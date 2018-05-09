@@ -55,4 +55,10 @@ And run the server
 ```
  $   php bin/console server:run
  ```
+ ##Links
+ * Trello board: https://trello.com/b/iGgIkt7P/dd
  
+ ##Contributors
+ * Arminas
+ * Karolis
+ * Mindaugas
