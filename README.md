@@ -1,7 +1,7 @@
 # Service App
 A simple web app to help with visits, managing users and so on
-##Getting started
-###Prerequisites
+## Getting started
+### Prerequisites
 * Before you download, make sure you have symfony 4 installed
 * Make sure you have a composer
 ### Installing
@@ -55,10 +55,10 @@ And run the server
 ```
  $   php bin/console server:run
  ```
- ##Links
+ ## Links
  * Trello board: https://trello.com/b/iGgIkt7P/dd
  
- ##Contributors
+ ## Contributors
  * Arminas
  * Karolis
  * Mindaugas
