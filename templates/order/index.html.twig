@@ -12,11 +12,16 @@
                 <th>Id</th>
                 <th>Date</th>
                 <th>Status</th>
-                <th>actions</th>
+                <th>Actions</th>
+                <th>Total price</th>
             </tr>
             </thead>
             <tbody>
             {% for order in orders %}
+                {% set price = 0 %}
+                {% for service in order.services.values %}
+                    {% set price = price + service.price %}
+                {% endfor %}
                 <tr>
                     <td>{{ order.id }}</td>
                     <td>{{ order.date ? order.date|date('Y-m-d H:i') : '' }}</td>
@@ -25,6 +30,7 @@
                         <a class="btn btn-dark" href="{{ path('order_show', {'id': order.id}) }}">show</a>
                         {% if order.status == "Ordered" %}<a class="btn btn-warning" href="{{ path('order_edit', {'id': order.id}) }}">edit</a>{% endif %}
                     </td>
+                    <td>{{ price|localizedcurrency('EUR') }}</td>
                 </tr>
             {% else %}
                 <tr>
