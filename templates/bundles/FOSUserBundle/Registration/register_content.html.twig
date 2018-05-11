@@ -1,9 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<h1 class="text-center text-secondary">REGISTRATION</h1>
+
 <link rel="stylesheet" type="text/css" href="/css/login.css">
 
-<div class="loginPage text-center">
+<div class="backg text-white loginPage">
+    <h1 class="text-center text-white">REGISTRATION</h1>
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form.email,{'attr':{'placeholder':'Email'}}) }}<br>
     {{ form_widget(form.username,{'attr':{'placeholder':'Username'}}) }}

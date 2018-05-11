@@ -10,7 +10,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Available</th>
-                    <th>Price, €</th>
+                    <th>Price</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -20,7 +20,7 @@
                         <td>{{ service.id }}</td>
                         <td>{{ service.title }}</td>
                         <td>{{ service.available ? 'Yes' : 'No' }}</td>
-                        <td>{{ service.price }}</td>
+                        <td>{{ service.price|localizedcurrency('EUR') }}</td>
                         <td>
                             <a class="btn btn-dark" href="{{ path('service_show', {'id': service.id}) }}">show</a>
                             <a class="btn btn-warning" href="{{ path('service_edit', {'id': service.id}) }}">edit</a>

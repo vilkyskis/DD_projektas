@@ -3,3 +3,22 @@
     width: 25%;
     padding: 10px;
 }
+
+.center-cropped {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    object-fit: cover;
+}
+body {
+    background-image: url(https://dreamsky10.com/wp-content/uploads/2016/11/wallpaper-repair-HD6.jpg);
+    background-color: #cccccc;
+}
+
+.backg{
+
+    background-color: rgba(0, 0, 2, 0.5);
+    padding: 100px;
+}

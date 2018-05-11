@@ -28,6 +28,7 @@ class ChequeController extends Controller
      */
     public function new(Request $request): Response
     {
+        /*TODO Make an automatic cheque creation, after order is created*/
         $cheque = new Cheque();
         $form = $this->createForm(ChequeType::class, $cheque);
         $form->handleRequest($request);
