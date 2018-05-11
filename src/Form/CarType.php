@@ -26,6 +26,7 @@ class CarType extends AbstractType
             ->add('eng_id_number')
             ->add('carsBrand')
             ->add('carsModel')
+            ->add('carsModel')
             ->add('user',HiddenType::class,array(
                 'data' => $this->security->getUser()
             ))

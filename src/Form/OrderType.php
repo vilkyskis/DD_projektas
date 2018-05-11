@@ -22,7 +22,6 @@ class OrderType extends AbstractType
             ->add('user')
             ->add('car')
             ->add('services')
-            /*->add('cheque')*/
         ;
     }
 

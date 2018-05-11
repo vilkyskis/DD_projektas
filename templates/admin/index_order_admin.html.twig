@@ -8,6 +8,7 @@
             <th scope="col-2">Car</th>
             <th scope="col-2">Owner</th>
             <th scope="col-2">Services</th>
+            <th scope="col-2">Payment</th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
                 <td><a class="btn btn-secondary" href="{{ path('admin_car_show', {'id': order.car.id}) }}">Car details</a></td>
                 <td><a class="btn btn-info" href="{{ path('admin_car_user', {'id': order.car.id}) }}">Owner details</a></td>
                 <td><a class="btn btn-primary" href="{{ path('admin_order_services', {'id': order.id}) }}">Ordered services</a></td>
+                <td><a class="btn btn-success" href="{{ path('cheque_show', {'id': order.id}) }}">View</a> </td>
             </tr>
         {% else %}
             <tr>

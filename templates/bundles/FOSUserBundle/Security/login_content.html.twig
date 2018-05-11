@@ -1,11 +1,11 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <link rel="stylesheet" type="text/css" href="/css/login.css">
 <form action="{{ path("fos_user_security_check") }}" method="post">
-    <div class="loginPage text-center">
+    <div class="loginPage text-center backg">
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     {% endif %}
-    <h1 class="text-center text-secondary">LOGIN</h1>
+    <h1 class="text-center text-white">LOGIN</h1>
     {% if error %}
         <div class=" text-white bg-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -24,7 +24,7 @@
         </div>
     </div>
     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+    <label class="text-white" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
         <a href="{{ path('fos_user_resetting_request') }}" class="btn">Forgot your password</a>
 
     {#<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}

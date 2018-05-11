@@ -163,4 +163,5 @@ class Order
 
         return $this;
     }
+    /*TODO Add function to calculate all price*/
 }

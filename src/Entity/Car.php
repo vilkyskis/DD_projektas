@@ -40,13 +40,13 @@ class Car
     private $carsBrand;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CarsModel", inversedBy="cars")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\CarsModel", inversedBy="carsModel")
+     * @ORM\JoinColumn(name="cars_brand_id", referencedColumnName="id")
      */
     private $carsModel;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="carsBrand")
      */
     private $orders;
 
