@@ -164,4 +164,13 @@ class Order
         return $this;
     }
     /*TODO Add function to calculate all price*/
+    public function calculate()
+    {
+        $price = 0;
+        foreach ($this->services as $service){
+            $price+=$service->getPrice();
+        }
+
+        return $price;
+    }
 }

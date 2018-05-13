@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ServicesCategory index{% endblock %}
+
+{% block body %}
+    <h1>ServicesCategory index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for services_category in services_categories %}
+            <tr>
+                <td>{{ services_category.id }}</td>
+                <td>{{ services_category.title }}</td>
+                <td>
+                    <a href="{{ path('services_category_show', {'id': services_category.id}) }}">show</a>
+                    <a href="{{ path('services_category_edit', {'id': services_category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('services_category_new') }}">Create new</a>
+{% endblock %}

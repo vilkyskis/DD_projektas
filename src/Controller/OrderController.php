@@ -35,8 +35,8 @@ class OrderController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($order);
-            $em->flush();/*TODO give a order price through url to cheque_create*/
-            return $this->redirectToRoute('cheque_new',['id' => $order->getId()]);
+            $em->flush();
+            return $this->redirectToRoute('order_index');
         }
 
         return $this->render('order/new.html.twig', [

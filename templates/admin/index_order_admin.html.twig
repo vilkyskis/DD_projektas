@@ -21,7 +21,9 @@
                 <td><a class="btn btn-secondary" href="{{ path('admin_car_show', {'id': order.car.id}) }}">Car details</a></td>
                 <td><a class="btn btn-info" href="{{ path('admin_car_user', {'id': order.car.id}) }}">Owner details</a></td>
                 <td><a class="btn btn-primary" href="{{ path('admin_order_services', {'id': order.id}) }}">Ordered services</a></td>
-                <td><a class="btn btn-success" href="{{ path('cheque_show', {'id': order.id}) }}">View</a> </td>
+                {% if order.cheque is not empty %}<td><a class="btn btn-success" href="{{ path('cheque_show', {'id': order.cheque.id}) }}">View</a> </td>{% else %}
+                    <td><a class="btn btn-danger" href="{{ path('cheque_new', {'price': order.calculate, 'id':order.id}) }}">Not payed</a> </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>

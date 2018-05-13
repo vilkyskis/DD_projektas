@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cheque;
+use App\Entity\Order;
 use App\Form\ChequeType;
 use App\Repository\ChequeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,20 +25,25 @@ class ChequeController extends Controller
     }
 
     /**
-     * @Route("/new", name="cheque_new", methods="GET|POST")
+     * @Route("/new?price={price},id={id}", name="cheque_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request,$price,$id): Response
     {
-        /*TODO Make an automatic cheque creation, after order is created*/
         $cheque = new Cheque();
-        $form = $this->createForm(ChequeType::class, $cheque);
+        $cheque->setPaid(false); // 1 - is paid; 0 - is nor paid
+        $em = $this->getDoctrine()->getManager();
+        $order = $em->getRepository(Order::class)->find($id);
+        $form = $this->createForm(ChequeType::class, $cheque,array(
+            'price' => $price,
+        ));
+        $order->setCheque($cheque);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cheque);
+            $order->setCheque($cheque);
             $em->flush();
-
             return $this->redirectToRoute('cheque_index');
         }
 

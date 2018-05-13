@@ -26,6 +26,7 @@
     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
     <label class="text-white" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
         <a href="{{ path('fos_user_resetting_request') }}" class="btn">Forgot your password</a>
+        <a href="{{ path('fos_user_registration_register') }}" class="btn">Register</a>
 
     {#<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
     </div>
