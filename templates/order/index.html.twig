@@ -9,7 +9,6 @@
         <table class="table table-striped table-bordered">
             <thead class="bg-primary text-white">
             <tr>
-                <th>Id</th>
                 <th>Date</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -19,7 +18,6 @@
             <tbody>
             {% for order in orders %}
                 <tr>
-                    <td>{{ order.id }}</td>
                     <td>{{ order.date ? order.date|date('Y-m-d H:i') : '' }}</td>
                     <td {% if order.status == "Done" %} class="text-success"{% else %} class="text-danger" {% endif %}>
                         {{ order.status }}

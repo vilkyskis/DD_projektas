@@ -1,3 +1,4 @@
+{#
 {% extends 'base.html.twig' %}
 
 {% block title %}Order{% endblock %}
@@ -19,10 +20,10 @@
                 <th>Status</th>
                 <td>{{ order.status }}</td>
             </tr>
-            {% for service in order.service %}
+            {% for service in order.services %}
             <tr>
                 <th>Service</th>
-                <td>{{ service.title }} {% if service.isDone %} Done {% else %} Not done {% endif %}</td>
+                <td>{{ service.title }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -33,4 +34,62 @@
     <a href="{{ path('order_edit', {'id': order.id}) }}">edit</a>
 
     {{ include('order/_delete_form.html.twig') }}
+{% endblock %}
+
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Order index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="display-4 text-secondary text-center">Orders</h1>
+
+        <table class="table table-striped table-bordered">
+            <thead class="bg-primary text-white">
+            <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Ordered services</th>
+                <th>Total price</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ order.date ? order.date|date('Y-m-d H:i') : '' }}</td>
+                    <td {% if order.status == "Done" %} class="text-success"{% else %} class="text-danger" {% endif %}>
+                        {{ order.status }}
+                    </td>
+                    <td>
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">View
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                {% for service in order.services %}
+                                   <li>{{ service.title }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div id="demo" class="collapse">
+                            {% for service in order.services %}
+                            {{ service.title }}
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td>{{ order.calculate|localizedcurrency('EUR') }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {#<div class="text-center container">
+            <a class="btn btn-primary" href="{{ path('order_new') }}">Create new</a>
+            <a class="btn btn-secondary" href="{{ path('index') }}">Go back</a>
+        </div>#}
+        <a href="{{ path('order_index') }}">back to list</a>
+
+        <a href="{{ path('order_edit', {'id': order.id}) }}">edit</a>
+
+        {{ include('order/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
