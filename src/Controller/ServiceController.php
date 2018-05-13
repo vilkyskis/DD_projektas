@@ -17,16 +17,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  */
 class ServiceController extends Controller
 {
-
-
-    /*
-     * /**
-     * @Route("/", name="service_user_index", methods="GET")
-     * @Security("has_role('ROLE_USER')")
-     *public function user_index(ServiceRepository $serviceRepository): Response
-    {
-        return $this->render('service/user_index.html.twig', ['services' => $serviceRepository->findAll()]);
-    }*/
     /**
      * @Route("/", name="service_index", methods="GET")
      * @Security("has_role('ROLE_USER')")
@@ -36,69 +26,5 @@ class ServiceController extends Controller
         return $this->render('service/index.html.twig', ['services' => $serviceRepository->findAll()]);
     }
 
-    /**
-     * @Route("/new", name="service_new", methods="GET|POST")
-     * @Security("has_role('ROLE_ADMIN')")
-     */
-    public function new(Request $request): Response
-    {
-        $service = new Service();
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($service);
-            $em->flush();
-
-            return $this->redirectToRoute('service_index');
-        }
-
-        return $this->render('service/new.html.twig', [
-            'service' => $service,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="service_show", methods="GET")
-     */
-    public function show(Service $service): Response
-    {
-        return $this->render('service/show.html.twig', ['service' => $service]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="service_edit", methods="GET|POST")
-     */
-    public function edit(Request $request, Service $service): Response
-    {
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('service_edit', ['id' => $service->getId()]);
-        }
-
-        return $this->render('service/edit.html.twig', [
-            'service' => $service,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="service_delete", methods="DELETE")
-     */
-    public function delete(Request $request, Service $service): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$service->getId(), $request->request->get('_token'))) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($service);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('service_index');
-    }
 }

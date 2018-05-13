@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ service.title }}</td>
                     <td>{{ service.price }}</td>
-                    <td> <a class="btn btn-primary" href="{{ path('order_done',{id:services.owner.id}) }}">Mark as done</a></td>
+                    <td> <a class="btn btn-primary" href="#{#{{ path('admin_service_done',{id:service.id}) }}#}">Mark as done</a></td>
                 </tr>
             {% endfor %}
             </tbody>

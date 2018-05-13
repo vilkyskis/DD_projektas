@@ -18,10 +18,10 @@ class OrderType extends AbstractType
                 'data' => new \DateTime(),
                 'years' => range(date('y'), date('y')+1)
             ))
-            ->add('status',HiddenType::class,array('data' => 'Ordered'))
+            ->add('status',null,array('data' => 'Ordered'))
             ->add('user')
             ->add('car')
-            ->add('services')
+            ->add('service')
         ;
     }
 

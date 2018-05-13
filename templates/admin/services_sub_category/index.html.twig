@@ -19,8 +19,8 @@
                 <td>{{ services_sub_category.id }}</td>
                 <td>{{ services_sub_category.title }}</td>
                 <td>
-                    <a href="{{ path('services_sub_category_show', {'id': services_sub_category.id}) }}">show</a>
-                    <a href="{{ path('services_sub_category_edit', {'id': services_sub_category.id}) }}">edit</a>
+                    <a href="{{ path('admin_services_sub_category_show', {'id': services_sub_category.id}) }}">show</a>
+                    <a href="{{ path('admin_services_sub_category_edit', {'id': services_sub_category.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('services_sub_category_new') }}">Create new</a>
+    <a href="{{ path('admin_services_sub_category_new') }}">Create new</a>
 {% endblock %}

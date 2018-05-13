@@ -2,6 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\ServicesCategory;
+use App\Entity\ServicesSubCategory;
+use App\Form\ServicesCategoryType;
+use App\Form\ServicesSubCategoryType;
+use App\Repository\ServicesCategoryRepository;
+use App\Repository\ServicesSubCategoryRepository;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\Routing\Annotation\Route;
@@ -222,6 +228,159 @@ class AdminController extends Controller
         return $this->render('admin/user_show_admin.html.twig', ['user' => $user]);
     }
 
+    // Category
+
+    /**
+     * @Route("/category", name="admin_services_category_index", methods="GET")
+     */
+    public function showCategory(ServicesCategoryRepository $categoryRepository): Response
+    {
+        return $this->render('admin/services_category/index.html.twig', ['services_categories' => $categoryRepository->findAll()]);
+    }
+
+    /**
+     * @Route("/category/new", name="admin_services_category_new", methods="GET|POST")
+     */
+    public function catNew(Request $request): Response
+    {
+        $servicesCategory = new ServicesCategory();
+        $form = $this->createForm(ServicesCategoryType::class, $servicesCategory);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($servicesCategory);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_services_category_index');
+        }
+
+        return $this->render('admin/services_category/new.html.twig', [
+            'services_category' => $servicesCategory,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/category/{id}", name="admin_services_category_show", methods="GET")
+     */
+    public function catShow(ServicesCategory $servicesCategory): Response
+    {
+        return $this->render('admin/services_category/show.html.twig', ['services_category' => $servicesCategory]);
+    }
+
+    /**
+     * @Route("/category/{id}/edit", name="admin_services_category_edit", methods="GET|POST")
+     */
+    public function catEdit(Request $request, ServicesCategory $servicesCategory): Response
+    {
+        $form = $this->createForm(ServicesCategoryType::class, $servicesCategory);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_services_category_edit', ['id' => $servicesCategory->getId()]);
+        }
+
+        return $this->render('admin/services_category/edit.html.twig', [
+            'services_category' => $servicesCategory,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/category/{id}", name="admin_services_category_delete", methods="DELETE")
+     */
+    public function catDelete(Request $request, ServicesCategory $servicesCategory): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$servicesCategory->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($servicesCategory);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('admin_services_category_index');
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------
+    // Subcategory
+
+    /**
+     * @Route("/services/sub/category", name="admin_services_sub_category_index", methods="GET")
+     */
+    public function subIndex(ServicesSubCategoryRepository $servicesSubCategoryRepository): Response
+    {
+        return $this->render('admin/services_sub_category/index.html.twig', ['services_sub_categories' => $servicesSubCategoryRepository->findAll()]);
+    }
+
+    /**
+     * @Route("/services/sub/category/new", name="admin_services_sub_category_new", methods="GET|POST")
+     */
+    public function subNew(Request $request): Response
+    {
+        $servicesSubCategory = new ServicesSubCategory();
+        $form = $this->createForm(ServicesSubCategoryType::class, $servicesSubCategory);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($servicesSubCategory);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_services_sub_category_index');
+        }
+
+        return $this->render('admin/services_sub_category/new.html.twig', [
+            'services_sub_category' => $servicesSubCategory,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/services/sub/category/{id}", name="admin_services_sub_category_show", methods="GET")
+     */
+    public function subShow(ServicesSubCategory $servicesSubCategory): Response
+    {
+        return $this->render('admin/services_sub_category/show.html.twig', ['services_sub_category' => $servicesSubCategory]);
+    }
+
+    /**
+     * @Route("/services/sub/category/{id}/edit", name="admin_services_sub_category_edit", methods="GET|POST")
+     */
+    public function subEdit(Request $request, ServicesSubCategory $servicesSubCategory): Response
+    {
+        $form = $this->createForm(ServicesSubCategoryType::class, $servicesSubCategory);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_services_sub_category_edit', ['id' => $servicesSubCategory->getId()]);
+        }
+
+        return $this->render('admin/services_sub_category/edit.html.twig', [
+            'services_sub_category' => $servicesSubCategory,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/services/sub/category/{id}", name="admin_services_sub_category_delete", methods="DELETE")
+     */
+    public function subDelete(Request $request, ServicesSubCategory $servicesSubCategory): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$servicesSubCategory->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($servicesSubCategory);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('admin_services_sub_category_index');
+    }
+
+    //--------------------------------------------------------------------------------
+
     /**
      * @Route("/order/{id}/services", name="admin_order_services", requirements={"id"="\d+"}, methods="GET")
      */
@@ -254,4 +413,6 @@ class AdminController extends Controller
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('order_done',array('id' => $slug));
     }
+
+
 }

@@ -1,6 +1,6 @@
     <body>
     <link rel="stylesheet" type="text/css" href="/css/login.css">
-    <div class="text-center backg">
+    <div class="text-center backg jumbotron">
         <h1 class="text-white" text-align="center">Welcome to our service app!</h1>
         <div class="container">
             <h5 class="text-white">We are happy to see you! We are are universal
@@ -58,7 +58,7 @@
         </div>
         <br>
         {% else %}
-            <<a class="text-center btn btn-primary text-white" href="{{ path('fos_user_registration_register') }}">Lets get started!</a>
+            <<a class="text-center btn btn-primary text-white" href="{{ path('fos_user_security_login') }}">Lets get started!</a>
         {% endif %}
 {#        <img class="img-circle center-cropped" src="{{ asset('images/bonnet.jpg') }}" alt="Amamam">#}
     </div>

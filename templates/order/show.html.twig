@@ -19,6 +19,12 @@
                 <th>Status</th>
                 <td>{{ order.status }}</td>
             </tr>
+            {% for service in order.service %}
+            <tr>
+                <th>Service</th>
+                <td>{{ service.title }} {% if service.isDone %} Done {% else %} Not done {% endif %}</td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 
