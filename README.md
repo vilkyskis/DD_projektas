@@ -33,10 +33,10 @@ A simple web app to help with visits, managing users and so on
  ###< symfony/framework-bundle ###
  
  ###> symfony/swiftmailer-bundle ###
- # For Gmail as a transport, use: "gmail://karcersp2018:mintmint22@localhost"
+ # For Gmail as a transport, use: "gmail://username:password@localhost"
  # For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode="
  # Delivery is disabled by default via "null://localhost"
- MAILER_URL=gmail://email:password@localhost
+ MAILER_URL=gmail://projectgaraz2018:adminadmin123@localhost
  ###< symfony/swiftmailer-bundle ###
  
  ###> doctrine/doctrine-bundle ###
