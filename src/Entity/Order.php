@@ -122,7 +122,7 @@ class Order
         return $this->services;
     }
 
-    public function addService(Service $service): self
+    public function addServices(Service $service): self
     {
         if (!$this->services->contains($service)) {
             $this->services[] = $service;
@@ -131,7 +131,7 @@ class Order
         return $this;
     }
 
-    public function removeService(Service $service): self
+    public function removeServices(Service $service): self
     {
         if ($this->services->contains($service)) {
             $this->services->removeElement($service);

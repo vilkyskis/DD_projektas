@@ -4,29 +4,23 @@
         <div class="container text-center">
             <h1 class="display-4 pb-4">Hello, {{ user.username|capitalize }}!</h1>
         </div>
+        <h2>Your {{ 'profile.show.email'|trans|lower }}: {{ user.email }}</h2>
+        <div class="container text-center">
+            <a class="btn btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
+            {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
+        </div>
 
-        <button class="btn btn-secondary" data-toggle="collapse" data-target="#demo">Show me my profile</button>
-
-        <div id="demo" class="collapse lead text-center container">Your {{ 'profile.show.username'|trans|lower }}: {{ user.username }}<br>
-            Your {{ 'profile.show.email'|trans|lower }}: {{ user.email }}
-            <div class="container text-center">
-                <a class="btn btn-lg" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
-                {#<a class="btn btn-dark btn-lg" href="{{ path('admin_index') }}" role="button">Back</a>#}
-            </div>
-
-            {% include '/bundles/FOSUserBundle/Profile/address_show.html.twig' with {addresses:user.getAddresses()} %}
-            <h2 class="text-center text-secondary">Your phone</h2>
-            {% if user.phone is empty %}
-                <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">You don't have associated phone, please add now</a>
-            {% else %}
-                {{ user.phone }}<br>
-                <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">Edit</a>
-                {#{{ include('user/_delete_form.html.twig') }}#}{#TODO number delete not working#}
-            {% endif %}
-            <br>
-            <div class="text-center container">
-                {% include '/bundles/FOSUserBundle/Profile/car_show.html.twig' with {cars:user.getCars()} %}
-            </div>
+        {% include '/bundles/FOSUserBundle/Profile/address_show.html.twig' with {addresses:user.getAddresses()} %}
+        <h2 class="text-center text-secondary">Your phone</h2>
+        {% if user.phone is empty %}
+            <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">You don't have associated phone, please add now</a>
+        {% else %}
+            {{ user.phone }}<br>
+            <a class="btn btn-lg" href="{{ path('user_edit',{id:user.id}) }}" role="button">Edit</a>
+        {% endif %}
+        <br>
+        <div class="text-center container">
+            {% include '/bundles/FOSUserBundle/Profile/car_show.html.twig' with {cars:user.getCars()} %}
         </div>
 
     </div>

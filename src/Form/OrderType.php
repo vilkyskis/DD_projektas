@@ -21,7 +21,7 @@ class OrderType extends AbstractType
             ->add('status',null,array('data' => 'Ordered'))
             ->add('user')
             ->add('car')
-            ->add('service')
+            ->add('services')
         ;
     }
 

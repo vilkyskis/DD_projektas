@@ -26,9 +26,6 @@
                         <form action="{{ path('order_edit', {'id': order.id}) }}">
                             <a class="btn btn-dark" href="{{ path('order_show', {'id': order.id}) }}">show</a>
                             <button type="submit" class="btn btn-warning" {% if order.status == "Done" %} disabled {% endif %}href="{{ path('order_edit', {'id': order.id}) }}">edit</button>
-                            {% if order.cheque is empty %}<a class="btn btn-danger" href="{{ path('cheque_new', {'price': order.calculate, 'id':order.id}) }}">pay</a>
-                            {% else %} <a class="btn btn-success text-white">paid</a>
-                                {% endif %}
                         </form>
 
                     </td>
