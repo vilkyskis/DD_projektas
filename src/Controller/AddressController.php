@@ -37,7 +37,7 @@ class AddressController extends Controller
             $em->persist($address);
             $em->flush();
 
-            return $this->redirectToRoute('address_index');
+            return $this->redirectToRoute('fos_user_profile_show');
         }
 
         return $this->render('address/new.html.twig', [

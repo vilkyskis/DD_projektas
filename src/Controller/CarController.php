@@ -37,7 +37,7 @@ class CarController extends Controller
             $em->persist($car);
             $em->flush();
 
-            return $this->redirectToRoute('car_index');
+            return $this->redirectToRoute('fos_user_profile_show');
         }
 
         return $this->render('car/new.html.twig', [
