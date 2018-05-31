@@ -42,7 +42,7 @@
                 {{ 'security.login.remember_me'|trans }}
             </label>
         </div>
-        <button class="btn btn-primary btn-block btn-signin" type="submit">Sign in</button>
+        <button class="btn btn-primary btn-block btn-signin" name="_submit" type="submit">Sign in</button>
         <a href="{{ path('fos_user_resetting_request') }}" class="btn">Forgot your password</a>
         <a href="{{ path('fos_user_registration_register') }}" class="btn">Register</a>
 
